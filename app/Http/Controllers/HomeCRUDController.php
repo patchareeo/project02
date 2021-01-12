@@ -46,7 +46,9 @@ class HomeCRUDController extends Controller
      */
     public function show($id)
     {
-        //
+        $details = Post::findOrFail($id);
+        // dd($details);
+        return view('page.showpost', compact('details'));
     }
 
     /**

@@ -18,13 +18,14 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 Route::resource('products', ProductController::class);
 
 Route::resource('posts', PostCRUDController::class);
-// Route::get('/', [PostCRUDController::class, 'index']);
+
 
 //templete
 // Route::get('/home', function () {
 //     return view('page/index');
 // })->name('index');
 Route::get('/index', [HomeCRUDController::class, 'index'])->name('index');
+Route::get('/show/{id}', [HomeCRUDController::class, 'show'])->name('show');
 
 // Route::resource('index', HomeuctController::class);
 
@@ -87,3 +88,7 @@ Route::get('/chat', function () {
 Route::get('/alert', function () {
     return view('page/alert');
 })->name('alert');
+
+Route::get('/showpost', function () {
+    return view('page/showpost');
+})->name('showpost');
