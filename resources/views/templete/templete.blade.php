@@ -60,7 +60,7 @@
 								<li><a href="{{route('index')}}"><i class="fa fa-home" style="font-size:25px;color:pink;"></i> Home</a></li>
 								<li class="dropdown"><a href="{{route('chat')}}"><i class="fa fa-comments"style="font-size:25px;color:pink;" ></i> Chat</a></li> 
 								<li><a href="{{route('alert')}}"><i class="	fa fa-bell" style="font-size:25px;color:pink;" ></i> Alert</a></li>
-								<li><a href="{{route('product-details')}}"><i class="fa fa-plus-circle" style="font-size:25px;color:pink;" ></i> Post</a></li>
+								<li><a href="{{route('posts.create')}}"><i class="fa fa-plus-circle" style="font-size:25px;color:pink;" ></i> Post</a></li>
 							</ul>
 						</div>
 					</div>

@@ -52,23 +52,22 @@
                             </div>
                         </div>
 
-						
-						
+                        <h4>Add comment</h4>
+                    <form method="post" action="{{ route('404') }}">
+                        @csrf
+                        <div class="form-group">
+                            <input type="text" name="comment_body" class="form-control" />
+                            {{-- <input type="hidden" name="post_id" value="{{ $post->id }}" /> --}}
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-warning" value="Add Comment" />
+                        </div>
+                    </form>
+
 							</div>
-							 {{-- <a class="left recommended-item-control" href="#recommended-item-carousel" data-slide="prev">
-								<i class="fa fa-angle-left"></i>
-							  </a>
-							  <a class="right recommended-item-control" href="#recommended-item-carousel" data-slide="next">
-								<i class="fa fa-angle-right"></i>
-							  </a>			 --}}
+							 
 						</div>
-					</div><!--/recommended_items-->
-					{{-- <ul class="pagination">
-					<li class="active"><a href="">1</a></li>
-					<li><a href="">2</a></li>
-					<li><a href="">3</a></li>
-					<li><a href="">&raquo;</a></li>
-					</ul> --}}
+					</div>
 				</div>
 			</div>
 		</div>

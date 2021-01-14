@@ -7,9 +7,9 @@ use App\Http\Controllers\HomeCRUDController;
 
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
@@ -24,7 +24,7 @@ Route::resource('posts', PostCRUDController::class);
 // Route::get('/home', function () {
 //     return view('page/index');
 // })->name('index');
-Route::get('/index', [HomeCRUDController::class, 'index'])->name('index');
+Route::get('/', [HomeCRUDController::class, 'index'])->name('index');
 Route::get('/show/{id}', [HomeCRUDController::class, 'show'])->name('show');
 
 // Route::resource('index', HomeuctController::class);
