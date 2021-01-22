@@ -12,4 +12,5 @@ class Post extends Model
     protected $fillable = [
         'name', 'price', 'amount' , 'detail' 
     ];
+    
 }

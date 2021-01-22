@@ -56,8 +56,8 @@ class PostCRUDController extends Controller
         $post->detail = $request->detail;
         $post->image = $path;
         $post->save();
-     
-        return redirect()->route('posts.index')
+        
+        return redirect()->route('index')
                         ->with('success','Post has been created successfully.');
     }
 

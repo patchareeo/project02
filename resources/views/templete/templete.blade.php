@@ -57,10 +57,10 @@
 					
 						<div class="mainmenu pull-left">
 							<ul class="nav navbar-nav collapse navbar-collapse">
-								<li><a href="{{route('index')}}"><i class="fa fa-home" style="font-size:25px;color:pink;"></i> Home</a></li>
-								<li class="dropdown"><a href="{{route('chat')}}"><i class="fa fa-comments"style="font-size:25px;color:pink;" ></i> Chat</a></li> 
-								<li><a href="{{route('alert')}}"><i class="	fa fa-bell" style="font-size:25px;color:pink;" ></i> Alert</a></li>
-								<li><a href="{{route('posts.create')}}"><i class="fa fa-plus-circle" style="font-size:25px;color:pink;" ></i> Post</a></li>
+								<li><a href="{{route('index')}}"><i class="fa fa-home" style="font-size:23px;"></i> Home</a></li>
+								{{-- <li class="dropdown"><a href="{{route('chat')}}"><i class="fa fa-comments"style="font-size:25px;color:pink;" ></i> Chat</a></li>  --}}
+								<li><a href="{{route('alert')}}"><i class="	fa fa-bell" style="font-size:22px;" ></i> Alert</a></li>
+								<li><a href="{{route('posts.create')}}"><i class="fa fa-plus-circle" style="font-size:22px;" ></i> Post</a></li>
 							</ul>
 						</div>
 					</div>

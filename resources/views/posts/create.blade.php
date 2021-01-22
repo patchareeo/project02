@@ -15,9 +15,7 @@
         <div class="pull-left mb-2">
             <h2>เพิ่มรายการสินค้า</h2>
         </div>
-        <div class="pull-right">
-            <a class="btn btn-primary" href="{{ route('posts.index') }}"> ย้อนกลับ</a>
-        </div>
+       
     </div>
 </div>
    
@@ -76,7 +74,13 @@
                @enderror
             </div>
         </div>
-        <button type="submit" class="btn btn-warning" href="{{ route('posts.index') }}">โพสต์สินค้า</button>
+        <div class="float-none">
+            <a class="btn btn-primary" href="{{ route('index') }}"> ย้อนกลับ</a>
+        </div>
+        <div class="float-lg-right">
+            <button type="submit" class="btn btn-warning" href="{{ route('posts.index') }}">โพสต์สินค้า</button>
+        </div>
+        
     </div>
    
 </form>

@@ -1,9 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProductController;
+// use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PostCRUDController;
 use App\Http\Controllers\HomeCRUDController;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\CommentController;
 
 
 
@@ -57,9 +59,9 @@ Route::get('/contact-us', function () {
 //     return view('page/login');
 // })->name('login');
 
-Route::get('/post', function () {
-    return view('page/product-details');
-})->name('product-details');
+// Route::get('/post', function () {
+//     return view('page/product-details');
+// })->name('product-details');
 
 Route::get('/shop', function () {
     return view('page/shop');
@@ -89,6 +91,33 @@ Route::get('/alert', function () {
     return view('page/alert');
 })->name('alert');
 
-Route::get('/showpost', function () {
-    return view('page/showpost');
-})->name('showpost');
+// Route::get('/showpost', function () {
+//     return view('page/showpost');
+// })->name('showpost');
+
+// Route::post('post', [PostController::class, 'store'])->name('post.store');
+// Route::get('post', [PostController::class, 'create'])->name('post.create');
+// // Route::get('/postss', [PostController::class, 'index'])->name('posts');
+// Route::get('/postsytem', [PostController::class, 'index'])->name('post.index');
+// Route::get('/article/{post:slug}', [PostController::class, 'show'])->name('post.show');
+
+// // Route::get('/article/{post:slug}', [PostController::class, 'show'])->name('post.show');
+// Route::post('/comment/store', [CommentController::class, 'store'])->name('comment.add');
+// Route::post('/reply/store', [CommentController::class, 'replyStore'])->name('reply.add');
+
+
+
+
+Route::get('post', [PostController::class, 'create'])->name('post.create');
+Route::post('post', [PostController::class, 'store'])->name('post.store');
+Route::get('/postsytem', [PostController::class, 'index'])->name('post.index');
+Route::get('/article/{post:slug}', [PostController::class, 'show'])->name('post.show');
+
+Route::post('/comment/store', [CommentController::class, 'store'])->name('comment.add');
+Route::post('/reply/store', [CommentController::class, 'replyStore'])->name('reply.add');
+
+
+
+
+  
+

@@ -4,7 +4,7 @@
 
 @section('content')
 	
-     <section id="slider"><!--slider-->
+    <section id="slider"><!--slider-->
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-12">
@@ -16,9 +16,7 @@
 	
 	<section>
 		<div class="container">
-			<div class="row">
-				
-				
+			<div class="row">				
 				<div class="col-sm-12 padding-right">
 					<div class="features_items">
 						<!-- <h2 class="title text-center">Features Items</h2> -->
@@ -48,29 +46,20 @@
 							  <a class="right recommended-item-control" href="#recommended-item-carousel" data-slide="next">
 								<i class="fa fa-angle-right"></i>
 							  </a>			
-						</div>
+							</div>
 					</div><!--/recommended_items-->
 					<ul class="pagination">
 					<li class="active"><a href="">1</a></li>
-					<li><a href="">2</a></li>
-					<li><a href="">3</a></li>
-					<li><a href="">&raquo;</a></li>
+					<li class="active"><a href="">2</a></li>
+					<li class="active"><a href="">3</a></li>
+					<li class="active"><a href="">&raquo;</a></li>
 					</ul>
 				</div>
 			</div>
 		</div>
 	</section>
-	
 
 	
-
-  
-    <script src="js/jquery.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/jquery.scrollUp.min.js"></script>
-	<script src="js/price-range.js"></script>
-    <script src="js/jquery.prettyPhoto.js"></script>
-    <script src="js/main.js"></script>
 </body>
 </html>
 

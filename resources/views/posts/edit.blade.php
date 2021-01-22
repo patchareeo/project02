@@ -35,8 +35,6 @@
          <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>ชื่อสินค้า:</strong>
-                {{-- <textarea name="name" class="form-control" placeholder="ชื่อสินค้า">{{ }}></textarea> --}}
-
                 <input type="text" name="name" class="form-control" placeholder={{ $post->name }}>
                @error('name')
                   <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
