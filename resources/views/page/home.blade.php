@@ -25,17 +25,14 @@
 							<div class="product-image-wrapper">
 								<div class="single-products">
 										<div class="productinfo text-center">
-											<img src="{{ Storage::url($post->image) }}" alt="" />
+											<img src="{{ Storage::url($post->image) }}"alt="Girl in a jacket" width="150" height="250"/>
                                             <h2>{{$post->price}}</h2>
                                             <p>{{$post->name}}</p>
 											<a href="{{ route('show',$post->id) }}" class="btn btn-default add-to-cart" ></i>ดูรายละเอียดสินค้า</a>
 										</div>
-							
 								</div>
-							
 							</div>
 						</div> 
-						
 						@endforeach
 						
 						

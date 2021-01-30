@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePostsTable extends Migration
+class CreateAlertsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,13 @@ class CreatePostsTable extends Migration
      */
     public function up()
     {
-        Schema::create('posts', function (Blueprint $table) {
+        Schema::create('alerts', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('slug');  // add slug 
-            $table->string('price');
-            $table->string('image');
+            $table->integer('orders_id')->unsigned();
+            $table->integer('user_id')->unsigned();
+            $table->integer('post_id')->unsigned();
+            $table->integer('user_name')->unsigned();
             $table->string('amount');
-            $table->string('date');
-            $table->text('time');
             $table->text('detail');
             $table->timestamps();
         });
@@ -34,6 +32,6 @@ class CreatePostsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('posts');
+        Schema::dropIfExists('alerts');
     }
 }

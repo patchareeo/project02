@@ -39,10 +39,36 @@
 					<div class="col-md-8 clearfix">
 						<div class="shop-menu clearfix pull-right">
 							<ul class="nav navbar-nav">
-								<!-- <li><a href="{{route('checkout')}}"><i class="fa fa-shopping-cart"></i> Cart</a></li> -->
-								<!-- <li><a href="{{route('profile')}}"><i class="fa fa-user"></i> Profile</a></li> -->
-								<li><a href="{{route('login')}}"><i class="fa fa-lock"></i> Login</a></li>
-								<li><a href="{{route('register')}}"><i class="fa fa-user"></i> Register</a></li>
+								<nav class="navbar navbar-light bg-light">
+									<div class="container-fluid">
+										<div class="collapse navbar-collapse" id="navbarSupportedContent">
+											<ul>
+												@if (Auth::user() == true)
+												<li><div>{{ Auth::user()->name }}</div></li>
+												<li>
+													<form method="POST" action="{{ route('logout') }}">
+														@csrf
+														<x-jet-responsive-nav-link href="{{ route('logout') }}"
+																		onclick="event.preventDefault();
+																					this.closest('form').submit();">
+															{{ __('Logout') }}
+														</x-jet-responsive-nav-link>
+													</form>
+												</li>
+													@else
+														<li><a href="{{route('login')}}"><i class="fa fa-lock"></i> Login</a></li>
+														<li><a href="{{route('register')}}"><i class="fa fa-user"></i> Register</a></li>
+													@endif	
+											</ul>
+										</div>
+										
+									
+									</div>
+								</nav>
+								
+								
+
+								
 							</ul>
 						</div>
 					</div>
@@ -59,7 +85,7 @@
 							<ul class="nav navbar-nav collapse navbar-collapse">
 								<li><a href="{{route('index')}}"><i class="fa fa-home" style="font-size:23px;"></i> Home</a></li>
 								{{-- <li class="dropdown"><a href="{{route('chat')}}"><i class="fa fa-comments"style="font-size:25px;color:pink;" ></i> Chat</a></li>  --}}
-								<li><a href="{{route('alert')}}"><i class="	fa fa-bell" style="font-size:22px;" ></i> Alert</a></li>
+								{{-- <li><a href="{{route('alert')}}"><i class="	fa fa-bell" style="font-size:22px;" ></i> Alert</a></li> --}}
 								<li><a href="{{route('posts.create')}}"><i class="fa fa-plus-circle" style="font-size:22px;" ></i> Post</a></li>
 							</ul>
 						</div>

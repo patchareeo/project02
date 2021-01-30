@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\PostComment;
+// use App\Models\PostComment;
+use App\Models\Post;
 use App\Models\Comment;
 
 
@@ -17,10 +18,13 @@ class CommentController extends Controller
 
         $comment->user()->associate($request->user());
 
-        $post = PostComment::find($request->post_id);
+        $post = Post::find($request->post_id);
 
-        // dd($comment);
+        // dd($request->comment);
+        // dd($request->post_id);
         // dd($post);
+
+
         $post->comments()->save($comment);   
 
         return back();
@@ -36,11 +40,14 @@ class CommentController extends Controller
 
         $reply->parent_id = $request->get('comment_id');
 
-        $post = PostComment::find($request->get('post_id'));
+        $post = Post::find($request->get('post_id'));
 
         $post->comments()->save($reply);
 
         return back();
 
     }
+
+
+
 }

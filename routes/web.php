@@ -6,7 +6,9 @@ use App\Http\Controllers\PostCRUDController;
 use App\Http\Controllers\HomeCRUDController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
+// use App\Http\Controllers\AlertController;
 
+use App\Models\Post;
 
 
 // Route::get('/', function () {
@@ -14,10 +16,13 @@ use App\Http\Controllers\CommentController;
 // });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
+    $data['posts'] = Post::orderBy('id','desc')->paginate(5);
+    // dd( Auth::user());
+    return view('page.home', $data);
+    // return view('dashboard');
 })->name('dashboard');
  
-Route::resource('products', ProductController::class);
+// Route::resource('products', ProductController::class);
 
 Route::resource('posts', PostCRUDController::class);
 
@@ -28,6 +33,9 @@ Route::resource('posts', PostCRUDController::class);
 // })->name('index');
 Route::get('/', [HomeCRUDController::class, 'index'])->name('index');
 Route::get('/show/{id}', [HomeCRUDController::class, 'show'])->name('show');
+Route::post('/show/{id}', [HomeCRUDController::class, 'store'])->name('page.showpost');
+// Route::get('/alert', [AlertController::class, 'show'])->name('page.alert');
+
 
 // Route::resource('index', HomeuctController::class);
 
@@ -35,9 +43,9 @@ Route::get('/404', function () {
     return view('page/404');
 })->name('404');
 
-Route::get('/blog-single', function () {
-    return view('page/blog-single');
-})->name('blog-single');
+Route::get('/product-details', function () {
+    return view('page/product-details');
+})->name('product-details');
 
 Route::get('/blog', function () {
     return view('page/blog');
@@ -87,9 +95,9 @@ Route::get('/chat', function () {
     return view('page/chat');
 })->name('chat');
 
-Route::get('/alert', function () {
-    return view('page/alert');
-})->name('alert');
+// Route::get('/alert', function () {
+//     return view('page/alert');
+// })->name('alert');
 
 // Route::get('/showpost', function () {
 //     return view('page/showpost');
@@ -108,8 +116,8 @@ Route::get('/alert', function () {
 
 
 
-Route::get('post', [PostController::class, 'create'])->name('post.create');
-Route::post('post', [PostController::class, 'store'])->name('post.store');
+// Route::get('post', [PostController::class, 'create'])->name('post.create');
+// Route::post('post', [PostController::class, 'store'])->name('post.store');
 Route::get('/postsytem', [PostController::class, 'index'])->name('post.index');
 Route::get('/article/{post:slug}', [PostController::class, 'show'])->name('post.show');
 

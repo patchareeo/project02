@@ -12,6 +12,7 @@
             <input type="hidden" name="comment_id" value="{{ $comment->id }}" />
         </div>
         <div class="form-group">
+        
             <input type="submit" class="btn btn-sm btn-outline-danger py-0" style="font-size: 0.8em;" value="Reply" />
         </div>
     </form>

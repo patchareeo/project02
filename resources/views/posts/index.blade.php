@@ -33,6 +33,8 @@
             <th>ชื่อสินค้า</th>
             <th>ราคา</th>
             <th>จำนวนสินค้า</th>
+            <th>วันที่ในการสั่งสินค้า</th>
+            <th>เวลาในการสั่งสินค้า</th>
             <th>รายละเอียดสินค้า</th>
             <th>รูปสินค้า</th>
             <th></th>
@@ -44,10 +46,12 @@
             <td>{{ $post->name }}</td>
             <td>{{ $post->price }}</td>
             <td>{{ $post->amount }}</td>
+            <td>{{ $post->date }}</td>
+            <td>{{ $post->time }}</td>
             <td>{{ $post->detail}}</td>
             <td><img src="{{ Storage::url($post->image) }}" height="75" width="75" alt="" /></td>
             <!-- <td>{{ $post->image}}</td> -->
-            <td>
+            {{-- <td>
                 <form action="{{ route('posts.destroy',$post->id) }}" method="POST">
     
                     <a class="btn btn-primary" href="{{ route('posts.edit',$post->id) }}">Edit</a>
@@ -57,7 +61,7 @@
       
                     <button type="submit" class="btn btn-danger">Delete</button>
                 </form>
-            </td>
+            </td> --}}
         </tr>
         @endforeach
     </table>

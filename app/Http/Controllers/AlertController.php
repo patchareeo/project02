@@ -3,11 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Post;
-use App\Models\orders;
-use Illuminate\Support\Facades\Validator;
- 
-class HomeCRUDController extends Controller
+use App\Models\Alert;
+
+class AlertController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,10 +13,8 @@ class HomeCRUDController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   
-       
-        $posts = Post::orderBy('id', 'DESC')->get();
-        return view('page.home', compact('posts'));
+    {
+        //
     }
 
     /**
@@ -45,16 +41,17 @@ class HomeCRUDController extends Controller
         ]);
 
         $productId = $request->id;
-        $post = new orders;
+        $post = new Alert;
         $post->amount = $request->input('amount');
         $post->detail = $request->input('detail');
         $post->user_id = 1;
         $post->post_id = $productId;
+        $post->orders_id = $productId;
 
         $post->save();
       
         // return retdirect()->back();
-        return redirect()->route('page.showpost', $productId)
+        return redirect()->route('page.alert', $productId)
                         ->with('success','Data Saved');
     }
 
@@ -65,23 +62,10 @@ class HomeCRUDController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {   
-        $details = Post::findOrFail($id);
-        $orders = orders::all();
-        // dd($orders);
-
-        
-        // $post = Post::find($id);
-        // $dateNow = (int)date("Y-m-d h:i");
-        // $datePost = (int)($post->date . ' ' . $post->time);
-        // dd($dateNow, $datePost);
-        // dd(date("Y-m-d h:i"), $post->date , $post->time);
-        // dd($details);
-        
-        // dd(date("Y-m-d h:i"), $post->date . ' ' . $post->time);
-        return view('page.showpost')-> with(compact('details'))->with(compact('orders'));
-        
-
+    {
+        $alert = Alert::all();
+        // return view('page.alert',compact('alert'));
+        return view('page.alert')-> with(compact('alert'));
         
     }
 
@@ -93,7 +77,7 @@ class HomeCRUDController extends Controller
      */
     public function edit($id)
     {
-        // return view('posts.edit',compact('post'));
+        //
     }
 
     /**
@@ -116,8 +100,6 @@ class HomeCRUDController extends Controller
      */
     public function destroy($id)
     {
-        $post->delete();
-        $post = Post::find($id);
-        dd(date("Y-m-d h:i"), $post->date . ' ' . $post->time);
+        //
     }
 }

@@ -28,7 +28,7 @@
 <form action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
   
-     <div class="row">
+    <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>ชื่อสินค้า:</strong>
@@ -56,6 +56,22 @@
                @enderror
             </div>
         </div>
+        {{-- Time  --}}
+        <form>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <label for="party"><strong>กำหนดวันในการสั่งซื้อ:</strong>
+                    <input type="date" value="2021-01-01" name="date" class="form-control">
+                </label>
+            </div>
+        </form>
+
+        <div class="col-xs-12 col-sm-12 col-md-3">
+            <strong>กำหนดระยะเวลาในการสั่งซื้อ:</strong>
+            <input type="time" id="input-limited-range" name="time" class="form-control">
+            <label for="form1" class=""></label> 
+        </div>
+
+        {{-- Time  --}}
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>รายละเอียดเพิ่มเติม:</strong>
@@ -78,7 +94,7 @@
             <a class="btn btn-primary" href="{{ route('index') }}"> ย้อนกลับ</a>
         </div>
         <div class="float-lg-right">
-            <button type="submit" class="btn btn-warning" href="{{ route('posts.index') }}">โพสต์สินค้า</button>
+            <button type="submit" class="btn btn-warning" >โพสต์สินค้า</button>
         </div>
         
     </div>

@@ -15,9 +15,7 @@
             <div class="pull-left">
                 <h2>Edit Post</h2>
             </div>
-            <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('posts.index') }}" enctype="multipart/form-data"> ย้อนกลับ</a>
-            </div>
+            
         </div>
     </div>
    
@@ -59,6 +57,21 @@
                @enderror
             </div>
         </div>
+        {{-- Time  --}}
+        <form>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <label for="party"><strong>กำหนดวันในการสั่งซื้อ:</strong>
+                    <input type="date" value="{{ $post->date }}" name="date" class="form-control">
+                </label>
+            </div>
+        </form>
+
+        <div class="col-xs-12 col-sm-12 col-md-3">
+            <strong>กำหนดระยะเวลาในการสั่งซื้อ:</strong>
+            <input type="time" id="inputMDEx1" value="{{ $post->time }}" name="time" class="form-control">
+            <label for="form1" class=""></label> 
+        </div>
+        {{-- Time  --}}
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>รายละเอียดเพิ่มเติม:</strong>
@@ -82,6 +95,10 @@
 
 
             </div>
+        
+        </div>
+        <div class="pull-right">
+            <a class="btn btn-primary" href="{{ route('index') }}" enctype="multipart/form-data"> ย้อนกลับ</a>
         </div>
             
               <button type="submit" class="btn btn-warning">อัพเดตสินค้า</button>
