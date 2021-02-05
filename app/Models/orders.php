@@ -23,4 +23,9 @@ class orders extends Model
         return $this->hasMany(Post::class);
      
     }
+
+    public function Alert()
+    {
+        return $this->morphMany(Alert::class, 'alertstable')->whereNull('alerts_id');
+    }
 }

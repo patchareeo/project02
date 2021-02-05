@@ -99,9 +99,10 @@
         </div>
         <div class="pull-right">
             <a class="btn btn-primary" href="{{ route('index') }}" enctype="multipart/form-data"> ย้อนกลับ</a>
+            <button type="submit" class="btn btn-warning">อัพเดตสินค้า</button>
         </div>
             
-              <button type="submit" class="btn btn-warning">อัพเดตสินค้า</button>
+              
           
         </div>
    

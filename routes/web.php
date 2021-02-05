@@ -6,9 +6,11 @@ use App\Http\Controllers\PostCRUDController;
 use App\Http\Controllers\HomeCRUDController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
-// use App\Http\Controllers\AlertController;
+use App\Http\Controllers\AlertController;
+use App\Http\Controllers\OrderController;
 
 use App\Models\Post;
+use App\Models\Alert;
 
 
 // Route::get('/', function () {
@@ -17,8 +19,10 @@ use App\Models\Post;
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     $data['posts'] = Post::orderBy('id','desc')->paginate(5);
+    $countAlert = Alert::all()->count();
+
     // dd( Auth::user());
-    return view('page.home', $data);
+    return view('page.home', $data)->with('countAlert' ,$countAlert);
     // return view('dashboard');
 })->name('dashboard');
  
@@ -34,8 +38,13 @@ Route::resource('posts', PostCRUDController::class);
 Route::get('/', [HomeCRUDController::class, 'index'])->name('index');
 Route::get('/show/{id}', [HomeCRUDController::class, 'show'])->name('show');
 Route::post('/show/{id}', [HomeCRUDController::class, 'store'])->name('page.showpost');
-// Route::get('/alert', [AlertController::class, 'show'])->name('page.alert');
+Route::get('/alert', [AlertController::class, 'index'])->name('page.alert');
+Route::get('/sale', [HomeCRUDController::class, 'sale'])->name('page.sale');
+Route::get('/cart', [OrderController::class, 'index'])->name('page.cart');
 
+// Route::get('/alert', function () {
+//     return view('page/alert');
+// })->name('alert');
 
 // Route::resource('index', HomeuctController::class);
 
@@ -91,13 +100,15 @@ Route::get('/test', function () {
     return view('templete/test');
 })->name('test');
 
-Route::get('/chat', function () {
-    return view('page/chat');
-})->name('chat');
+// Route::get('/cart', function () {
+//     return view('page/cart');
+// })->name('cart');
 
-// Route::get('/alert', function () {
-//     return view('page/alert');
-// })->name('alert');
+// Route::get('/sale', function () {
+//     return view('page/sale');
+// })->name('sale');
+
+
 
 // Route::get('/showpost', function () {
 //     return view('page/showpost');
@@ -118,7 +129,7 @@ Route::get('/chat', function () {
 
 // Route::get('post', [PostController::class, 'create'])->name('post.create');
 // Route::post('post', [PostController::class, 'store'])->name('post.store');
-Route::get('/postsytem', [PostController::class, 'index'])->name('post.index');
+// Route::get('/postsytem', [PostController::class, 'index'])->name('post.index');
 Route::get('/article/{post:slug}', [PostController::class, 'show'])->name('post.show');
 
 Route::post('/comment/store', [CommentController::class, 'store'])->name('comment.add');

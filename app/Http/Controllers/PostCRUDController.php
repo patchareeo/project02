@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Alert;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-
+use Auth;
 class PostCRUDController extends Controller
 {
     /**
@@ -17,8 +18,11 @@ class PostCRUDController extends Controller
     {
         //dd($posts);
         $data['posts'] = Post::orderBy('id','desc')->paginate(5);
+        $Alerts = Alert::orderBy('id', 'DESC')->get();
+        $countAlert = Alert::all()->count();
+        
     
-        return view('posts.index', $data);
+        return view('posts.index')->with('countAlert' ,$countAlert)->with(compact('Alerts') ,$data);
         // $posts=Post::orderBy('id', 'desc')->get();
         // $posts = Post::all();
         // echo $posts;
@@ -86,6 +90,8 @@ class PostCRUDController extends Controller
         $post->time = $request->time;
         $post->detail = $request->detail;
         $post->image = $path;
+        $post->user_id = Auth::user()->id;
+        $post->user_name = Auth::user()->name;
         $post->save();
       
         

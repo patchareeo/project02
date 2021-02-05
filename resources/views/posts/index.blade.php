@@ -51,7 +51,7 @@
             <td>{{ $post->detail}}</td>
             <td><img src="{{ Storage::url($post->image) }}" height="75" width="75" alt="" /></td>
             <!-- <td>{{ $post->image}}</td> -->
-            {{-- <td>
+            <td>
                 <form action="{{ route('posts.destroy',$post->id) }}" method="POST">
     
                     <a class="btn btn-primary" href="{{ route('posts.edit',$post->id) }}">Edit</a>
@@ -61,7 +61,7 @@
       
                     <button type="submit" class="btn btn-danger">Delete</button>
                 </form>
-            </td> --}}
+            </td>
         </tr>
         @endforeach
     </table>

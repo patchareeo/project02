@@ -1,6 +1,6 @@
 @extends('templete.templete')
 
-@section('title', 'Home |Heawnea')
+@section('title', 'Sale |Heawnea')
 
 @section('content')
 	
@@ -19,8 +19,8 @@
 			<div class="row">				
 				<div class="col-sm-12 padding-right">
 					<div class="features_items">
-						<h2 class="title text-center">รายการสินค้าทั้งหมด</h2>
-                        @foreach($posts as $post)
+						<h2 class="title text-center">สินค้าที่ลงขาย</h2>
+                        @foreach($Sale as $post)
                         <div class="col-sm-3">
 							<div class="product-image-wrapper">
 								<div class="single-products">

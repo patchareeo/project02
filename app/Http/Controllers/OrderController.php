@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\orders;
 use App\Models\Alert;
 
-class AlertController extends Controller
+class OrderController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,12 +15,9 @@ class AlertController extends Controller
      */
     public function index()
     {
-        $Alerts = Alert::orderBy('id', 'DESC')->get();
+        $Order = orders::orderBy('id', 'DESC')->get();
         $countAlert = Alert::all()->count();
-        // dd($countAlert);
-
-        // return view('page.alert', ['countAlert' => $countAlert])->with(compact('Alerts'));
-        return view('page.alert')->with('countAlert' ,$countAlert)->with(compact('Alerts'));
+        return view('page.cart')->with('countAlert' ,$countAlert)->with(compact('Order'));
         
     }
 
@@ -47,17 +45,16 @@ class AlertController extends Controller
         ]);
 
         $productId = $request->id;
-        $post = new Alert;
+        $post = new orders;
         $post->amount = $request->input('amount');
         $post->detail = $request->input('detail');
         $post->user_id = 1;
         $post->post_id = $productId;
-        $post->orders_id = $productId;
+        // $post->user_name = $productId;
 
         $post->save();
-      
         // return retdirect()->back();
-        return redirect()->route('page.alert')
+        return redirect()->route('page.cart')
                         ->with('success','Data Saved');
     }
 
@@ -69,14 +66,7 @@ class AlertController extends Controller
      */
     public function show($id)
     {
-        $Alerts = Alert::all();
-        
-        // $Alerts = Alert::findOrFail($id);
-        // return view('page.alert',compact('alert'));
-        // dd($Alerts);
-        return view('page.alert')-> with(compact('Alerts'));
-        
-        
+        //
     }
 
     /**

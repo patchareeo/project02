@@ -33,7 +33,9 @@
 				<div class="row">
 					<div class="col-md-4 clearfix">
 						<div class="logo pull-left">
-						<!-- <a href="index.html"><img src="images/home/nea3.png" alt="" width="50" height="50"/></a> -->
+						<a href="index.html"><img src="{{asset('images/home/nealogo.png')}}" alt="" width="170" height="75"/></a> 
+						 
+						 
 						</div>
 					</div>
 					<div class="col-md-8 clearfix">
@@ -80,13 +82,17 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-9">
-					
+						
 						<div class="mainmenu pull-left">
 							<ul class="nav navbar-nav collapse navbar-collapse">
-								<li><a href="{{route('index')}}"><i class="fa fa-home" style="font-size:23px;"></i> Home</a></li>
-								{{-- <li class="dropdown"><a href="{{route('chat')}}"><i class="fa fa-comments"style="font-size:25px;color:pink;" ></i> Chat</a></li>  --}}
-								{{-- <li><a href="{{route('alert')}}"><i class="	fa fa-bell" style="font-size:22px;" ></i> Alert</a></li> --}}
-								<li><a href="{{route('posts.create')}}"><i class="fa fa-plus-circle" style="font-size:22px;" ></i> Post</a></li>
+								<li><a href="{{route('index')}}"><i class="fa fa-home" style="font-size:23px;color:rgba(214, 127, 14, 0.849);"></i> Home</a></li>
+								{{-- <li class="dropdown"><a href="{{route('chat')}}"><i class="fa fa-comments"style="font-size:25px;color:pink;" ></i> Chat</a></li> {{$countAlert}} --}}  
+							@if(Auth::user())	
+								<li><a href="{{route('page.sale')}}"><i class="fa fa-usd" style="font-size:22px;color:rgba(214, 127, 14, 0.849);"></i> Sale</a></li>
+								<li><a href="{{route('page.cart')}}"><i class="fa fa-shopping-cart" style="font-size:22px;color:rgba(214, 127, 14, 0.849);"></i> Cart</a></li>
+								<li><a href="{{route('page.alert')}}"><i class="fa fa-bell" style="font-size:22px;color:rgba(214, 127, 14, 0.849);" ><span class="badge bg-primary" style="color:rgba(201, 70, 9, 0.849);">{{$countAlert}}</span></i> Alert</a></li>
+								<li><a href="{{route('posts.create')}}"><i class="fa fa-plus-circle" style="font-size:23px;color:rgba(214, 127, 14, 0.849);" ></i> Post</a></li>
+							@endif
 							</ul>
 						</div>
 					</div>

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Add Post</title>
+    <title>Post |Heawnea</title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" >
 </head>
@@ -12,10 +12,7 @@
   
 <div class="row">
     <div class="col-lg-12 margin-tb">
-        <div class="pull-left mb-2">
-            <h2>เพิ่มรายการสินค้า</h2>
-        </div>
-       
+            <h2 class="title text-center">เพิ่มรายการสินค้า</h2>
     </div>
 </div>
    
@@ -92,10 +89,9 @@
         </div>
         <div class="float-none">
             <a class="btn btn-primary" href="{{ route('index') }}"> ย้อนกลับ</a>
+            <button type="submit" class="btn btn-warning">โพสต์สินค้า</button>
         </div>
-        <div class="float-lg-right">
-            <button type="submit" class="btn btn-warning" >โพสต์สินค้า</button>
-        </div>
+      
         
     </div>
    

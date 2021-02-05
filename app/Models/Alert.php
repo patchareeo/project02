@@ -20,13 +20,15 @@ class Alert extends Model
 
     public function posts() {
   
-        return $this->hasMany(Post::class);
+        return $this->hasMany(Post::class );
      
     }
 
-    public function orders() {
+    public function Alert() {
   
-        return $this->hasMany(orders::class);
+        return $this->hasMany(Alert::class ,'alerts_id');
      
     }
+
+
 }

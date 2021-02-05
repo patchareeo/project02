@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\orders;
+use App\Models\Alert;
 use Illuminate\Support\Facades\Validator;
+use Auth;
+
  
 class HomeCRUDController extends Controller
 {
@@ -18,7 +21,24 @@ class HomeCRUDController extends Controller
     {   
        
         $posts = Post::orderBy('id', 'DESC')->get();
-        return view('page.home', compact('posts'));
+        $Alerts = Alert::orderBy('id', 'DESC')->get();
+        $countAlert = Alert::all()->count();
+        return view('page.home')->with(compact('posts'))->with('countAlert' ,$countAlert)->with(compact('Alerts'));
+        // return view('page.showpost')-> with(compact('details'))->with(compact('orders'));
+
+    }
+
+    public function sale()
+    {
+        // $posts = Post::orderBy('id', 'DESC')->get();
+        // $Sale = Post::orderBy('id', 'DESC')->get();
+        $Alerts = Alert::orderBy('id', 'DESC')->get();
+        $id = Auth::user()->id;
+        $Sale = Post::where('user_id',$id)->get();
+        $countAlert = Alert::all()->count();
+       
+        return view('page.sale')->with(compact('Sale'))->with('countAlert' ,$countAlert)->with(compact('Alerts'));
+
     }
 
     /**
@@ -50,8 +70,20 @@ class HomeCRUDController extends Controller
         $post->detail = $request->input('detail');
         $post->user_id = 1;
         $post->post_id = $productId;
+        // $post->user_name = $productId;
 
         $post->save();
+
+        $productId = $request->id;
+        $alert = new Alert;
+        $alert->amount = $request->input('amount');
+        $alert->detail = $request->input('detail');
+        $alert->user_id = 1;
+        $alert->post_id = $productId;
+        $alert->orders_id = $productId;
+        $alert->user_name = $productId;
+
+        $alert->save();
       
         // return retdirect()->back();
         return redirect()->route('page.showpost', $productId)
@@ -67,8 +99,10 @@ class HomeCRUDController extends Controller
     public function show($id)
     {   
         $details = Post::findOrFail($id);
-        $orders = orders::all();
-        // dd($orders);
+        // $orders = orders::all();
+        $orders = orders::where('post_id',$id)->get();
+        $countAlert = Alert::all()->count();
+        // dd($ordersUser);
 
         
         // $post = Post::find($id);
@@ -79,7 +113,7 @@ class HomeCRUDController extends Controller
         // dd($details);
         
         // dd(date("Y-m-d h:i"), $post->date . ' ' . $post->time);
-        return view('page.showpost')-> with(compact('details'))->with(compact('orders'));
+        return view('page.showpost')->with(compact('details'))->with(compact('orders'))->with('countAlert' ,$countAlert);
         
 
         
