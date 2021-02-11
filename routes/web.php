@@ -11,6 +11,7 @@ use App\Http\Controllers\OrderController;
 
 use App\Models\Post;
 use App\Models\Alert;
+use App\Models\orders;
 
 
 // Route::get('/', function () {
@@ -19,7 +20,10 @@ use App\Models\Alert;
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     $data['posts'] = Post::orderBy('id','desc')->paginate(5);
-    $countAlert = Alert::all()->count();
+    // $countAlert = Alert::all()->count();
+    $id = Auth::user()->id;
+    $countAlert = Alert::where('orders_id',$id)->count();
+   
 
     // dd( Auth::user());
     return view('page.home', $data)->with('countAlert' ,$countAlert);
@@ -40,7 +44,7 @@ Route::get('/show/{id}', [HomeCRUDController::class, 'show'])->name('show');
 Route::post('/show/{id}', [HomeCRUDController::class, 'store'])->name('page.showpost');
 Route::get('/alert', [AlertController::class, 'index'])->name('page.alert');
 Route::get('/sale', [HomeCRUDController::class, 'sale'])->name('page.sale');
-Route::get('/cart', [OrderController::class, 'index'])->name('page.cart');
+Route::get('/cart', [HomeCRUDController::class, 'cart'])->name('page.cart');
 
 // Route::get('/alert', function () {
 //     return view('page/alert');

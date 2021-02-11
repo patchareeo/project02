@@ -19,12 +19,18 @@ class HomeCRUDController extends Controller
      */
     public function index()
     {   
+        if (Auth::user()) {
+            $id = Auth::user()->id;
+            $posts = Post::orderBy('id', 'DESC')->get();
+            $Alerts = Alert::orderBy('id', 'DESC')->get();
+            $countAlert = Alert::where('orders_id',$id)->count();
+            // $countAlert = Alert::all()->count();
+            return view('page.home')->with(compact('posts'))->with('countAlert' ,$countAlert)->with(compact('Alerts'));
+        } else {
+            $posts = Post::orderBy('id', 'DESC')->get();
+            return view('page.home')->with(compact('posts'));
+        }
        
-        $posts = Post::orderBy('id', 'DESC')->get();
-        $Alerts = Alert::orderBy('id', 'DESC')->get();
-        $countAlert = Alert::all()->count();
-        return view('page.home')->with(compact('posts'))->with('countAlert' ,$countAlert)->with(compact('Alerts'));
-        // return view('page.showpost')-> with(compact('details'))->with(compact('orders'));
 
     }
 
@@ -35,7 +41,8 @@ class HomeCRUDController extends Controller
         $Alerts = Alert::orderBy('id', 'DESC')->get();
         $id = Auth::user()->id;
         $Sale = Post::where('user_id',$id)->get();
-        $countAlert = Alert::all()->count();
+        // $countAlert = Alert::all()->count();
+        $countAlert = Alert::where('orders_id',$id)->count();
        
         return view('page.sale')->with(compact('Sale'))->with('countAlert' ,$countAlert)->with(compact('Alerts'));
 
@@ -57,8 +64,33 @@ class HomeCRUDController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
+        
+        
+        $orders = Post::where('id',$id)->get();
+        // dd($orders);
+        foreach ($orders as $order) {
+            // $id = $order->id;
+            // $user_id = $order->user_id;
+            // $user_name = $order->user_name;
+            // $name = $order->name;
+            // $price = $order->price;
+            $id = $order->id;
+            $user_id = $order->user_id;
+            $user_name = $order->user_name;
+            $name = $order->name;
+            $slug = $order->slug;
+            $price = $order->price;
+            $image = $order->image;
+            $amount = $order->amount;
+            $date = $order->date;
+            $time = $order->time;
+            $detail = $order->detail;
+        }
+        // dd($id, $user_name, $name);
+        
+
         $validator = Validator::make($request->all(), [
             'amount' => 'required',
             'detail' => 'required',
@@ -68,26 +100,50 @@ class HomeCRUDController extends Controller
         $post = new orders;
         $post->amount = $request->input('amount');
         $post->detail = $request->input('detail');
-        $post->user_id = 1;
+        $post->user_id = Auth::user()->id;
         $post->post_id = $productId;
-        // $post->user_name = $productId;
-
+        $post->user_name = Auth::user()->name;
+        $post->product_name = $name;
+        $post->product_slug = $slug;
+        $post->product_price = $price;
+        $post->product_image = $image;
+        $post->product_date = $date;
+        $post->time = $time;
         $post->save();
 
+            // Alert 
         $productId = $request->id;
         $alert = new Alert;
         $alert->amount = $request->input('amount');
         $alert->detail = $request->input('detail');
-        $alert->user_id = 1;
+        $alert->user_id = Auth::user()->id;
         $alert->post_id = $productId;
-        $alert->orders_id = $productId;
-        $alert->user_name = $productId;
-
+        $alert->orders_id = $user_id;
+        $alert->user_name = Auth::user()->name;
+        $alert->product_name = $name;
+        $alert->product_slug = $slug;
+        $alert->product_price = $price;
+        $alert->product_image = $image;
+        $alert->product_date = $date;
+        $alert->time = $time;
         $alert->save();
+
+        // dd($alert);
       
         // return retdirect()->back();
         return redirect()->route('page.showpost', $productId)
                         ->with('success','Data Saved');
+    }
+
+    public function cart()
+    {
+
+        // $buy = orders::orderBy('id', 'DESC')->get();
+        $id = Auth::user()->id;
+        $cart = orders::where('user_id',$id)->orderBy('id', 'DESC')->get();
+        $countAlert = Alert::where('orders_id',$id)->count();
+
+        return view('page.cart')->with(compact('cart'))->with('countAlert' ,$countAlert);
     }
 
     /**
@@ -101,7 +157,7 @@ class HomeCRUDController extends Controller
         $details = Post::findOrFail($id);
         // $orders = orders::all();
         $orders = orders::where('post_id',$id)->get();
-        $countAlert = Alert::all()->count();
+        $countAlert = Alert::where('orders_id',$id)->count();
         // dd($ordersUser);
 
         

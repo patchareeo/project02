@@ -140,6 +140,7 @@
 							<div class="product-image-wrapper">
 								<div class="single-products">         
 										<div class="productinfo text-center">
+                                            <p>{{ $order->user_name}}</p>
                                             <p>จำนวน :{{ $order->amount}}</p>
                                             <br>
                                             <p>รายละเอียด :{{ $order->detail}}</p>

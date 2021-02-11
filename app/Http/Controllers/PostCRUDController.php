@@ -19,7 +19,8 @@ class PostCRUDController extends Controller
         //dd($posts);
         $data['posts'] = Post::orderBy('id','desc')->paginate(5);
         $Alerts = Alert::orderBy('id', 'DESC')->get();
-        $countAlert = Alert::all()->count();
+        $id = Auth::user()->id;
+        $countAlert = Alert::where('orders_id',$id)->count();
         
     
         return view('posts.index')->with('countAlert' ,$countAlert)->with(compact('Alerts') ,$data);
@@ -170,7 +171,7 @@ class PostCRUDController extends Controller
     {
         $post->delete();
     
-        return redirect()->route('posts.index')
+        return redirect()->route('index')
                         ->with('success','Post has been deleted successfully');
     }
 }

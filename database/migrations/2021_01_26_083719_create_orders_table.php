@@ -16,10 +16,17 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id')->unsigned();
-            // $table->string('user_name')->unsigned();
+            $table->string('user_name');
             $table->integer('post_id')->unsigned();
             $table->string('amount');
             $table->text('detail');
+
+            $table->string('product_name');
+            $table->string('product_slug');  // add slug 
+            $table->string('product_price');
+            $table->string('product_image');
+            $table->string('product_date');
+            $table->text('time');
             $table->timestamps();
         });
     }

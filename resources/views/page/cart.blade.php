@@ -17,38 +17,48 @@
 						<tr class="cart_menu">
 							<td class="image">สินค้า</td>
 							<td class="description"></td>
+							<td class="date">เวลาในการสั่งซื้อ</td>
 							<td class="price">ราคา</td>
 							<td class="quantity">จำนวน</td>
-							<td class="total">รวม</td>
+							{{-- <td class="total">รวม</td> --}}
 							<td></td>
 						</tr>
 					</thead>
 					<tbody>
+						@foreach ($cart as $order)
+						
 						<tr>
 							<td class="cart_product">
-								<a href=""><img src="images/cart/one.png" alt=""></a>
+								<img src="{{ Storage::url($order->product_image) }}" alt="" width="180" height="150" />
 							</td>
 							<td class="cart_description">
-								<h4><a href="">ชุดเดรส ชุดกระโปรง</a></h4>
+								<h4><a href="{{ route('page.showpost', $order->id) }}">{{ $order->product_name}}</a></h4>
 								{{-- <p>Web ID: 1089772</p> --}}
 							</td>
+							<td class="cart_date">
+								<p>{{ $order->product_date}}</p> 
+							</td>
 							<td class="cart_price">
-								<p>150</p>
+								<p>{{ $order->product_price}}</p> 
 							</td>
 							<td class="cart_quantity">
+								<p>{{ $order->amount}}</p> 
+							</td>
+							{{-- <td class="cart_quantity">
 								<div class="cart_quantity_button">
 									<a class="cart_quantity_up" href=""> + </a>
 									<input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
 									<a class="cart_quantity_down" href=""> - </a>
 								</div>
-							</td>
-							<td class="cart_total">
+							</td> --}}
+							{{-- <td class="cart_total">
 								<p class="cart_total_price">150</p>
-							</td>
-							<td class="cart_delete">
+							</td> --}}
+							{{-- <td class="cart_delete">
 								<a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
-							</td>
+							</td> --}}
 						</tr>
+						@endforeach
 
 						
 						<tr>
@@ -59,6 +69,7 @@
 					</tbody>
 				</table>
 			</div>
+			
 			
 		</div>
 	</section> <!--/#cart_items-->

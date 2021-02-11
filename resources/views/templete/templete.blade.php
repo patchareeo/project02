@@ -92,6 +92,13 @@
 								<li><a href="{{route('page.cart')}}"><i class="fa fa-shopping-cart" style="font-size:22px;color:rgba(214, 127, 14, 0.849);"></i> Cart</a></li>
 								<li><a href="{{route('page.alert')}}"><i class="fa fa-bell" style="font-size:22px;color:rgba(214, 127, 14, 0.849);" ><span class="badge bg-primary" style="color:rgba(201, 70, 9, 0.849);">{{$countAlert}}</span></i> Alert</a></li>
 								<li><a href="{{route('posts.create')}}"><i class="fa fa-plus-circle" style="font-size:23px;color:rgba(214, 127, 14, 0.849);" ></i> Post</a></li>
+							
+							{{-- @else
+								<li><a href="{{route('page.sale')}}"><i class="fa fa-usd" style="font-size:22px;color:rgba(214, 127, 14, 0.849);"></i> Sale</a></li>
+								<li><a href="{{route('page.cart')}}"><i class="fa fa-shopping-cart" style="font-size:22px;color:rgba(214, 127, 14, 0.849);"></i> Cart</a></li>
+								<li><a href="{{route('page.alert')}}"><i class="fa fa-bell" style="font-size:22px;color:rgba(214, 127, 14, 0.849);" ><span class="badge bg-primary" style="color:rgba(201, 70, 9, 0.849);"></span></i> Alert</a></li>
+								<li><a href="{{route('posts.create')}}"><i class="fa fa-plus-circle" style="font-size:23px;color:rgba(214, 127, 14, 0.849);" ></i> Post</a></li>
+								 --}}
 							@endif
 							</ul>
 						</div>

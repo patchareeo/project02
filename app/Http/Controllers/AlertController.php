@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Alert;
+use Auth;
 
 class AlertController extends Controller
 {
@@ -15,7 +16,9 @@ class AlertController extends Controller
     public function index()
     {
         $Alerts = Alert::orderBy('id', 'DESC')->get();
-        $countAlert = Alert::all()->count();
+        $id = Auth::user()->id;
+        $Alerts = Alert::where('orders_id',$id)->get();
+        $countAlert = Alert::where('orders_id',$id)->count();
         // dd($countAlert);
 
         // return view('page.alert', ['countAlert' => $countAlert])->with(compact('Alerts'));

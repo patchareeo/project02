@@ -20,7 +20,8 @@
 							<div class="product-image-wrapper">
 								<div class="alert alert-warning">
 										<div class=" text-center">
-                                            <p>จำนวน :{{ $alert->amount}}</p>
+											<p>ผู้สั่งสินค้า : {{ $alert->user_name}}</p>
+                                            <p>สินค้า : {{ $alert->product_name}}จำนวน : {{ $alert->amount}}</p>
                                             <br>
                                             <p>รายละเอียด :{{ $alert->detail}}</p>
                                             <br>

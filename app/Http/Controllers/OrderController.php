@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\orders;
 use App\Models\Alert;
+use Illuminate\Support\Facades\Validator;
+use Auth;
 
 class OrderController extends Controller
 {
@@ -16,7 +18,8 @@ class OrderController extends Controller
     public function index()
     {
         $Order = orders::orderBy('id', 'DESC')->get();
-        $countAlert = Alert::all()->count();
+        $id = Auth::user()->id;
+        $countAlert = Alert::where('orders_id',$id)->count();
         return view('page.cart')->with('countAlert' ,$countAlert)->with(compact('Order'));
         
     }
