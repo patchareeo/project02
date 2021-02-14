@@ -33,7 +33,7 @@
          <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>ชื่อสินค้า:</strong>
-                <input type="text" name="name" class="form-control" placeholder={{ $post->name }}>
+                <input type="text" name="name" class="form-control" value="{{ $post->name }}" placeholder={{ $post->name }}>
                @error('name')
                   <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                @enderror
@@ -42,7 +42,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>ราคาสินค้า:</strong>
-                <input type="text" name="price" class="form-control" placeholder={{ $post->price }}>
+                <input type="text" name="price" class="form-control" value="{{ $post->price }}" placeholder={{ $post->price }}>
                @error('price')
                   <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                @enderror
@@ -51,7 +51,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>จำนวนสินค้า:</strong>
-                <input type="text" name="amount" class="form-control" placeholder={{ $post->amount }}>
+                <input type="text" name="amount" class="form-control" value="{{ $post->amount }}" placeholder={{ $post->amount }}>
                @error('amount')
                   <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                @enderror
@@ -75,7 +75,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>รายละเอียดเพิ่มเติม:</strong>
-                <textarea class="form-control" style="height:150px" name="detail" placeholder={{ $post->detail }}></textarea>
+                <textarea class="form-control" style="height:150px" name="detail" placeholder="รายละเอียดเพิ่มเติม">{{ $post->detail }}</textarea>
                 @error('detail')
                   <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                 @enderror
@@ -84,7 +84,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>เพิ่มรูปสินค้า:</strong>
-                 <input type="file" name="image" class="form-control" placeholder="Post Title">
+                 <input type="file" name="image" class="form-control" value="" placeholder="Post Title">
                 @error('image')
                   <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                @enderror

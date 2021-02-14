@@ -85,7 +85,7 @@
                             @csrf
                             @method('DELETE')
               
-                            <button type="submit" class="btn btn-danger">Delete</button>
+                            <button type="submit" class="btn btn-danger" onclick="return confirm('ต้องการลบสินค้าใช่หรือไม่ ?')">Delete</button>
                         </form>
                         @endif
                         @endif
@@ -97,7 +97,9 @@
                         <form action="{{ route('page.showpost',$details->id) }}" method="POST">   
                          {{ csrf_field() }}
                          @if (Auth::user())
+                         @if (Auth::user()->name != $details->user_name)
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" >สั่งสินค้า</button>
+                        @endif
                         @endif
                         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
@@ -134,24 +136,31 @@
                         {{-- showordes --}}
                         
                         @foreach ($orders as $order)
-                        
+                        @if (Auth::user())
+                        @if (Auth::user()->name === $order->user_name)
+                        <form action="{{ route('order.destroy',$order->id) }}" method="POST">
                         <div class="col-md-4">
                             <br>
 							<div class="product-image-wrapper">
 								<div class="single-products">         
 										<div class="productinfo text-center">
-                                            <p>{{ $order->user_name}}</p>
-                                            <p>จำนวน :{{ $order->amount}}</p>
+                                            <p>ผู้สั่งสินค้า : {{ $order->user_name}}</p>
+                                            <p>จำนวน : {{ $order->amount}}</p>
+                                            <p>รายละเอียด : {{ $order->detail}}</p>
                                             <br>
-                                            <p>รายละเอียด :{{ $order->detail}}</p>
-                                            <br>
-                                            <button type="submit" class="btn btn-warning" onclick="return confirm('ยกเลิกการสั่งสินค้าใช่หรือไม่ ?')">ยกเลิกการสั่งสินค้า</button>
+
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-warning" onclick="return confirm('ต้องการยกเลิกการสั่งสินค้าใช่หรือไม่ ?')">ยกเลิกการสั่งสินค้า</button>
 										</div>
 							
 								</div>
 							
 							</div>
                         </div> 
+                        </form>
+                        @endif
+                        @endif
 
                         @endforeach
                         {{-- showordes --}}

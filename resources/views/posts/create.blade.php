@@ -57,7 +57,7 @@
         <form>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <label for="party"><strong>กำหนดวันในการสั่งซื้อ:</strong>
-                    <input type="date" value="2021-01-01" name="date" class="form-control">
+                    <input type="date" value="Y-D-M" name="date" class="form-control">
                 </label>
             </div>
         </form>
@@ -94,6 +94,7 @@
       
         
     </div>
+    
    
 </form>
 

@@ -20,6 +20,7 @@ class AlertController extends Controller
         $Alerts = Alert::where('orders_id',$id)->get();
         $countAlert = Alert::where('orders_id',$id)->count();
         // dd($countAlert);
+        
 
         // return view('page.alert', ['countAlert' => $countAlert])->with(compact('Alerts'));
         return view('page.alert')->with('countAlert' ,$countAlert)->with(compact('Alerts'));

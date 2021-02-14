@@ -204,10 +204,19 @@ class HomeCRUDController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        $post->delete();
-        $post = Post::find($id);
-        dd(date("Y-m-d h:i"), $post->date . ' ' . $post->time);
+        $Alerts = Alert::where('orders_id',$id);
+        $Alerts ->delete();
+        $order = orders::findOrFail($id);
+        $order->delete();
+        // $Alerts = Alert::findOrFail($id);
+       
+        // $Alerts = Alert::orderBy('id', 'DESC')->get();
+
+        // $post = Post::find($id);
+        // dd(date("Y-m-d h:i"), $post->date . ' ' . $post->time);
+        // dd($order);
+        return redirect()->back();
     }
 }

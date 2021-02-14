@@ -157,7 +157,7 @@ class PostCRUDController extends Controller
         $post->time = $request->time;
         $post->save();
     
-        return redirect()->route('index')
+        return redirect()->route('page.showpost', ['id' => $post])
                         ->with('success','Post updated successfully');
     }
 

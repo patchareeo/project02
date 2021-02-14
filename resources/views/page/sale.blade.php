@@ -36,7 +36,7 @@
 						@endforeach
 						
 						
-							</div>
+							{{-- </div>
 							 <a class="left recommended-item-control" href="#recommended-item-carousel" data-slide="prev">
 								<i class="fa fa-angle-left"></i>
 							  </a>
@@ -44,13 +44,13 @@
 								<i class="fa fa-angle-right"></i>
 							  </a>			
 							</div>
-					</div><!--/recommended_items-->
+					</div>
 					<ul class="pagination">
 					<li class="active"><a href="">1</a></li>
 					<li class="active"><a href="">2</a></li>
 					<li class="active"><a href="">3</a></li>
 					<li class="active"><a href="">&raquo;</a></li>
-					</ul>
+					</ul> --}}
 				</div>
 			</div>
 		</div>

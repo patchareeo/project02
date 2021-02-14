@@ -45,6 +45,7 @@ Route::post('/show/{id}', [HomeCRUDController::class, 'store'])->name('page.show
 Route::get('/alert', [AlertController::class, 'index'])->name('page.alert');
 Route::get('/sale', [HomeCRUDController::class, 'sale'])->name('page.sale');
 Route::get('/cart', [HomeCRUDController::class, 'cart'])->name('page.cart');
+Route::delete('/order/{id}', [HomeCRUDController::class, 'destroy'])->name('order.destroy');
 
 // Route::get('/alert', function () {
 //     return view('page/alert');
@@ -59,6 +60,10 @@ Route::get('/404', function () {
 Route::get('/product-details', function () {
     return view('page/product-details');
 })->name('product-details');
+
+Route::get('/create', function () {
+    return view('page/create');
+})->name('create');
 
 Route::get('/blog', function () {
     return view('page/blog');
