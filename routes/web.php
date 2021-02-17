@@ -39,6 +39,7 @@ Route::resource('posts', PostCRUDController::class);
 // Route::get('/home', function () {
 //     return view('page/index');
 // })->name('index');
+
 Route::get('/', [HomeCRUDController::class, 'index'])->name('index');
 Route::get('/show/{id}', [HomeCRUDController::class, 'show'])->name('show');
 Route::post('/show/{id}', [HomeCRUDController::class, 'store'])->name('page.showpost');
@@ -46,6 +47,20 @@ Route::get('/alert', [AlertController::class, 'index'])->name('page.alert');
 Route::get('/sale', [HomeCRUDController::class, 'sale'])->name('page.sale');
 Route::get('/cart', [HomeCRUDController::class, 'cart'])->name('page.cart');
 Route::delete('/order/{id}', [HomeCRUDController::class, 'destroy'])->name('order.destroy');
+// Route::get('status', [HomeCRUDController::class, 'status'])->name('alert.status');
+Route::get('/search', [HomeCRUDController::class, 'search']);
+Route::post('/autocomplete', [HomeCRUDController::class, 'searchProduct'])->name('autocomplete');
+
+
+
+Route::get('/article/{post:slug}', [PostController::class, 'show'])->name('post.show');
+
+
+// Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () { });
+
+Route::post('/comment/store', [CommentController::class, 'store'])->name('comment.add');
+Route::post('/reply/store', [CommentController::class, 'replyStore'])->name('reply.add');
+Route::delete('/comment/{id}', [CommentController::class, 'destroy'])->name('comment.destroy');
 
 // Route::get('/alert', function () {
 //     return view('page/alert');
@@ -139,10 +154,7 @@ Route::get('/test', function () {
 // Route::get('post', [PostController::class, 'create'])->name('post.create');
 // Route::post('post', [PostController::class, 'store'])->name('post.store');
 // Route::get('/postsytem', [PostController::class, 'index'])->name('post.index');
-Route::get('/article/{post:slug}', [PostController::class, 'show'])->name('post.show');
 
-Route::post('/comment/store', [CommentController::class, 'store'])->name('comment.add');
-Route::post('/reply/store', [CommentController::class, 'replyStore'])->name('reply.add');
 
 
 

@@ -19,6 +19,7 @@ class AlertController extends Controller
         $id = Auth::user()->id;
         $Alerts = Alert::where('orders_id',$id)->get();
         $countAlert = Alert::where('orders_id',$id)->count();
+        // $order = orders::where('orders_id',$id)->get();
         // dd($countAlert);
         
 

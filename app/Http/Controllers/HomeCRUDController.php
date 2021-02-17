@@ -34,6 +34,30 @@ class HomeCRUDController extends Controller
 
     }
 
+    public function search(){
+        return view('page.home');
+
+    }
+
+    // public function autocomplete(Request $request){
+    //     $project = Post::query();
+    //     if ($request->name) {
+    //         $project->where('name', 'Like', '%' . $request->name . '%');
+    //         return view('page.search')->with(compact('project' ,$project));
+    //     }
+    // }
+
+  
+
+    public function searchProduct(Request $request) {
+        $name = "%" . $request->search . "%" ;
+        $products = Post::where('name','LIKE', $name)->get();
+        $id = Auth::user()->id;
+        $countAlert = Alert::where('orders_id',$id)->count();
+        // dd($name);
+        return view("page.search")->with('products',$products)->with('countAlert' ,$countAlert);
+    }
+
     public function sale()
     {
         // $posts = Post::orderBy('id', 'DESC')->get();
@@ -87,6 +111,7 @@ class HomeCRUDController extends Controller
             $date = $order->date;
             $time = $order->time;
             $detail = $order->detail;
+            $status = $order->status;
         }
         // dd($id, $user_name, $name);
         
@@ -108,6 +133,7 @@ class HomeCRUDController extends Controller
         $post->product_price = $price;
         $post->product_image = $image;
         $post->product_date = $date;
+        $post->status->$status;
         $post->time = $time;
         $post->save();
 
@@ -146,6 +172,13 @@ class HomeCRUDController extends Controller
         return view('page.cart')->with(compact('cart'))->with('countAlert' ,$countAlert);
     }
 
+    public function status(Request $request){
+
+        // dd($request);
+        // $order = orders::orderBy('id', 'DESC')->get();
+
+    }
+
     /**
      * Display the specified resource.
      *
@@ -157,7 +190,9 @@ class HomeCRUDController extends Controller
         $details = Post::findOrFail($id);
         // $orders = orders::all();
         $orders = orders::where('post_id',$id)->get();
+        // $id = Auth::user()->id;
         $countAlert = Alert::where('orders_id',$id)->count();
+        
         // dd($ordersUser);
 
         
@@ -210,9 +245,10 @@ class HomeCRUDController extends Controller
         $Alerts ->delete();
         $order = orders::findOrFail($id);
         $order->delete();
-        // $Alerts = Alert::findOrFail($id);
-       
-        // $Alerts = Alert::orderBy('id', 'DESC')->get();
+
+        
+        // $cart = orders::where('id',$id);
+        // $cart->delete();
 
         // $post = Post::find($id);
         // dd(date("Y-m-d h:i"), $post->date . ' ' . $post->time);

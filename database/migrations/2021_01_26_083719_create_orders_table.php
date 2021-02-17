@@ -27,6 +27,7 @@ class CreateOrdersTable extends Migration
             $table->string('product_image');
             $table->string('product_date');
             $table->text('time');
+            $table->string('status')->nullable();
             $table->timestamps();
         });
     }

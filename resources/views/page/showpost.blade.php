@@ -171,37 +171,6 @@
                                 </ul>
                             </div>
                         </div>
-                        {{--  --}}
-                    
-                      
-            {{-- <div class="card border-success">
-              <h5 class="card-header ">สินค้า</h5>
-              <div class="card-body">
-                <div class="row no-gutters">
-                  <div class="col-md-4">
-                    <img src="{{ Storage::url($details->image) }}" height="300" width="325">
-                  </div>
-                  <div class="col-md-6">
-                    <div class="card-body">
-                      <h5 class="card-title"><strong>ชื่อสินค้า :</strong> {{ $details->name }}</h5>
-                      <h5 class="card-title"><strong>ราคา :</strong> {{ $details->price }}</h5>
-                      <h5 class="card-title"><strong>จำนวนสินค้า :</strong> {{ $details->amount }}</h5>
-                      <p class="card-text"><strong>รายละเอียดสินค้า :</strong> {{ $details->detail }}</p>
-                      <p class="card-text"><small class="text-muted">{{ $details->date }} {{ $details->time}}</small></p>
-                      <form action="{{ route('posts.destroy',$details->id) }}" method="POST">
-                        <a class="btn btn-warning" href="{{ route('posts.edit',$details->id) }}">Edit</a>
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger">Delete</button>
-                    </form>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <br> --}}
-            
-            {{--  --}}
 
 					</div>
 							 
@@ -217,7 +186,6 @@
                         <div class="card">
                            <div class="card-body">
                             <h3>แสดงความคิดเห็น</h3> 
-                        
                             @include('post.partials.replys', ['comments' => $details->comments, 'post_id' => $details->id])
             
                             
@@ -232,6 +200,7 @@
                                     <input type="hidden" name="post_id" value="{{ $details->id }}" />
                                     
                                 </div>
+                                
                                 <div class="form-group">
                                     <input type="submit" class="btn btn-warning"  value="Add Comment" />
                                 </div>

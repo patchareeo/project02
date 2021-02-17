@@ -49,7 +49,7 @@
                                         <p>{{ $order->amount }}</p>
                                     </td>
                                     <td class="status">
-                                        <p>{{ $order->amount }}</p>
+                                        <p>{{ $order->status }}</p>
                                     </td>
                                     {{-- <td class="cart_quantity">
 								<div class="cart_quantity_button">

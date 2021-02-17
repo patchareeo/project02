@@ -24,8 +24,8 @@ class orders extends Model
      
     }
 
-    public function Alert()
-    {
-        return $this->morphMany(Alert::class, 'alertstable')->whereNull('alerts_id');
-    }
+    // public function Alert()
+    // {
+    //     return $this->morphMany(Alert::class, 'alertstable')->whereNull('alerts_id');
+    // }
 }

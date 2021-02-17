@@ -24,11 +24,11 @@ class Alert extends Model
      
     }
 
-    public function Alert() {
+    // public function Alert() {
   
-        return $this->hasMany(Alert::class ,'alerts_id');
+    //     return $this->hasMany(Alert::class ,'alerts_id');
      
-    }
+    // }
 
 
 }
