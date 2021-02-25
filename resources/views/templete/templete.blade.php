@@ -33,7 +33,7 @@
 				<div class="row">
 					<div class="col-md-4 clearfix">
 						<div class="logo pull-left">
-						<a href="index.html"><img src="{{asset('images/home/nealogo.png')}}" alt="" width="170" height="75"/></a> 
+						<a href="{{route('index')}}"><img src="{{asset('images/home/nealogo.png')}}" alt="" width="170" height="75"/></a> 
 						 
 						 
 						</div>
@@ -46,7 +46,7 @@
 										<div class="collapse navbar-collapse" id="navbarSupportedContent">
 											<ul>
 												@if (Auth::user() == true)
-												<li><div>{{ Auth::user()->name }}</div></li>
+												<li><div><a href="{{route('404')}}"><div>{{ Auth::user()->name }}</a></div></li>
 												<li>
 													<form method="POST" action="{{ route('logout') }}">
 														@csrf
@@ -103,7 +103,7 @@
 							</ul>
 						</div>
 					</div>
-					<form action="{{ route('autocomplete') }}" method="POST">
+					<form action="{{ route('search') }}" method="POST">
                         @csrf
 
                         <div class="col-sm-3">

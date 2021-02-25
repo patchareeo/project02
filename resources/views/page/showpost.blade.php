@@ -191,6 +191,7 @@
                             
                         </div>
             
+                        
                         <div class="card-body">
                             {{-- <h5>Leave a comment</h5> --}}
                             <form method="post" action="{{ route('comment.add') }}">
@@ -206,6 +207,7 @@
                                 </div>
                             </form>
                         </div>
+                        
             
                         </div>
                     </div>

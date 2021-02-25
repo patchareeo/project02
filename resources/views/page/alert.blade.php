@@ -27,10 +27,15 @@
                                         <p>รายละเอียด :{{ $alert->detail }}</p>
                                         <br>
 
-										<form action="{{ route('alert.status') }}" method="get">
+										<form action="{{ route('404') }}" method="get">
                                         <button type="submit" class="btn btn-warning"
 										onclick="return confirm('ต้องการรับฝากหิ้วสินค้าใช่หรือไม่ ?')">ยืนยันสั่งสินค้า</button>
 									</form>
+                                    <br>
+                                    <form action="{{ route('404') }}" method="get">
+                                        <button type="submit" class="btn btn-warning"
+                                            onclick="return confirm('ต้องการยกเลิกสินค้าใช่หรือไม่ ?')">ยกเลิกสินค้า</button>
+                                    </form>
 
                                     </div>
 

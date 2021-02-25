@@ -1,4 +1,9 @@
 @foreach ($comments as $comment)
+<style>
+    .display-comment .display-comment {
+        margin-left: 40px
+    }
+</style>
     <div class="display-comment">
         <strong>{{ $comment->user->name }}</strong>
         <p>{{ $comment->comment }}</p>

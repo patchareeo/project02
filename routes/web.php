@@ -48,8 +48,8 @@ Route::get('/sale', [HomeCRUDController::class, 'sale'])->name('page.sale');
 Route::get('/cart', [HomeCRUDController::class, 'cart'])->name('page.cart');
 Route::delete('/order/{id}', [HomeCRUDController::class, 'destroy'])->name('order.destroy');
 // Route::get('status', [HomeCRUDController::class, 'status'])->name('alert.status');
-Route::get('/search', [HomeCRUDController::class, 'search']);
-Route::post('/autocomplete', [HomeCRUDController::class, 'searchProduct'])->name('autocomplete');
+// Route::get('/search', [HomeCRUDController::class, 'search']);
+Route::post('/search', [HomeCRUDController::class, 'searchProduct'])->name('search');
 
 
 

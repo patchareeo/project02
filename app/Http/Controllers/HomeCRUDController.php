@@ -34,21 +34,6 @@ class HomeCRUDController extends Controller
 
     }
 
-    public function search(){
-        return view('page.home');
-
-    }
-
-    // public function autocomplete(Request $request){
-    //     $project = Post::query();
-    //     if ($request->name) {
-    //         $project->where('name', 'Like', '%' . $request->name . '%');
-    //         return view('page.search')->with(compact('project' ,$project));
-    //     }
-    // }
-
-  
-
     public function searchProduct(Request $request) {
         $name = "%" . $request->search . "%" ;
         $products = Post::where('name','LIKE', $name)->get();
@@ -100,18 +85,18 @@ class HomeCRUDController extends Controller
             // $user_name = $order->user_name;
             // $name = $order->name;
             // $price = $order->price;
+            // $detail = $order->detail;
+            // $status = $order->status;
+            // $date = $order->date;
+            // $slug = $order->slug;
             $id = $order->id;
             $user_id = $order->user_id;
             $user_name = $order->user_name;
             $name = $order->name;
-            $slug = $order->slug;
             $price = $order->price;
             $image = $order->image;
             $amount = $order->amount;
-            $date = $order->date;
             $time = $order->time;
-            $detail = $order->detail;
-            $status = $order->status;
         }
         // dd($id, $user_name, $name);
         
@@ -129,12 +114,12 @@ class HomeCRUDController extends Controller
         $post->post_id = $productId;
         $post->user_name = Auth::user()->name;
         $post->product_name = $name;
-        $post->product_slug = $slug;
         $post->product_price = $price;
         $post->product_image = $image;
-        $post->product_date = $date;
-        $post->status->$status;
-        $post->time = $time;
+        // $post->product_slug = $slug;
+        // $post->product_date = $date;
+        // $post->status->$status;
+        // $post->time = $time;
         $post->save();
 
             // Alert 
@@ -147,11 +132,11 @@ class HomeCRUDController extends Controller
         $alert->orders_id = $user_id;
         $alert->user_name = Auth::user()->name;
         $alert->product_name = $name;
-        $alert->product_slug = $slug;
         $alert->product_price = $price;
-        $alert->product_image = $image;
-        $alert->product_date = $date;
-        $alert->time = $time;
+        // $alert->product_slug = $slug;
+        // $alert->product_image = $image;
+        // $alert->product_date = $date;
+        // $alert->time = $time;
         $alert->save();
 
         // dd($alert);
@@ -190,7 +175,7 @@ class HomeCRUDController extends Controller
         $details = Post::findOrFail($id);
         // $orders = orders::all();
         $orders = orders::where('post_id',$id)->get();
-        // $id = Auth::user()->id;
+        $id = Auth::user()->id;
         $countAlert = Alert::where('orders_id',$id)->count();
         
         // dd($ordersUser);
@@ -241,7 +226,7 @@ class HomeCRUDController extends Controller
      */
     public function destroy(Request $request, $id)
     {
-        $Alerts = Alert::where('orders_id',$id);
+        $Alerts = Alert::where('id',$id);
         $Alerts ->delete();
         $order = orders::findOrFail($id);
         $order->delete();
