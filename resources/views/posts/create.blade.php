@@ -1,17 +1,17 @@
-{{-- @extends('templete.templete')
+@extends('templete.templete')
 
 @section('title', 'Post |Heawnea')
 
-@section('content') --}}
+@section('content')
 
-<!DOCTYPE html>
+{{-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Post |Heawnea</title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" >
-</head>
+</head> --}}
 <body>
 
 <div class="container mt-2">
@@ -32,7 +32,7 @@
     @csrf
   
     <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="col-xs-12 col-sm-12 col-md-6">
             <div class="form-group">
                 <strong>ชื่อสินค้า:</strong>
                 <input type="text" name="name" class="form-control" placeholder="ชื่อสินค้า">
@@ -41,7 +41,7 @@
                @enderror
             </div>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="col-xs-12 col-sm-12 col-md-6">
             <div class="form-group">
                 <strong>ราคาสินค้า:</strong>
                 <input type="text" name="price" class="form-control" placeholder="ราคาสินค้า">
@@ -50,7 +50,7 @@
                @enderror
             </div>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="col-xs-12 col-sm-12 col-md-6">
             <div class="form-group">
                 <strong>จำนวนสินค้า:</strong>
                 <input type="text" name="amount" class="form-control" placeholder="จำนวนสินค้า">
@@ -61,7 +61,7 @@
         </div>
         {{-- Time  --}}
         <form>
-            <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="col-xs-12 col-sm-12 col-md-3">
                 <label for="party"><strong>กำหนดวันในการสั่งซื้อ:</strong>
                     <input type="date" value="Y-D-M" name="date" class="form-control">
                 </label>
@@ -87,31 +87,23 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>เพิ่มรูปสินค้า:</strong>
-                 <input type="file" name="image" class="form-control" placeholder="Post Title">
+                 <input type="file" name="image" class="" placeholder="Post Title">
                 @error('image')
                   <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                @enderror
             </div>
+        </div> 
+        <div class="pull-left">
+            <a class="btn btn-info" href="{{ route('index') }}" class="float-none"> ย้อนกลับ</a>  
         </div>
-        <div class="float-none">
-            <a class="btn btn-primary" href="{{ route('index') }}"> ย้อนกลับ</a>
-            <button type="submit" class="btn btn-warning">โพสต์สินค้า</button>
+        <div class="pull-right">
+            <button type="submit" class="btn btn-warning" class="pull-right">โพสต์สินค้า</button>
         </div>
-      
-        
     </div>
     
    
 </form>
-
-<script src="js/jquery.js"></script>
-<script src="js/price-range.js"></script>
-<script src="js/jquery.scrollUp.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/jquery.prettyPhoto.js"></script>
-<script src="js/main.js"></script>
-
 </body>
 </html>
 
-{{-- @endsection --}}
+@endsection

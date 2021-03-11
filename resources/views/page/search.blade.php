@@ -18,7 +18,7 @@
             <div class="row">
                 <div class="col-sm-12 padding-right">
                     <div class="features_items">
-                        <h2 class="title text-center">รายการค้านหา</h2>
+                        <h2 class="title text-center">รายการค้นหา</h2>
 
                         @foreach ($products as $product)
                     

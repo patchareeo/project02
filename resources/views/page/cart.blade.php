@@ -49,7 +49,8 @@
                                         <p>{{ $order->amount }}</p>
                                     </td>
                                     <td class="status">
-                                        <p>{{ $order->status }}</p>
+                                        <p>รอการยืนยัน</p>
+                                        {{-- <p>{{ $order->status }}</p> --}}
                                     </td>
                                     {{-- <td class="cart_quantity">
 								<div class="cart_quantity_button">

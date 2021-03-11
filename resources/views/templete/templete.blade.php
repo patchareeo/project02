@@ -46,7 +46,7 @@
 										<div class="collapse navbar-collapse" id="navbarSupportedContent">
 											<ul>
 												@if (Auth::user() == true)
-												<li><div><a href="{{route('404')}}"><div>{{ Auth::user()->name }}</a></div></li>
+												<li><div><a href="{{route('page.profile')}}"><div>{{ Auth::user()->name }}</a></div></li>
 												<li>
 													<form method="POST" action="{{ route('logout') }}">
 														@csrf

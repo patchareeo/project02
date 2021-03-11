@@ -1,11 +1,17 @@
-<!DOCTYPE html>
+@extends('templete.templete')
+
+@section('title', 'Edit Post |Heawnea')
+
+@section('content')
+
+{{-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Edit Post</title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" >
-</head>
+</head> --}}
 <body>
 
 <div class="container mt-2">
@@ -30,7 +36,7 @@
         @method('PUT')
    
          <div class="row">
-         <div class="col-xs-12 col-sm-12 col-md-12">
+         <div class="col-xs-12 col-sm-12 col-md-6">
             <div class="form-group">
                 <strong>ชื่อสินค้า:</strong>
                 <input type="text" name="name" class="form-control" value="{{ $post->name }}" placeholder={{ $post->name }}>
@@ -39,7 +45,7 @@
                @enderror
             </div>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="col-xs-12 col-sm-12 col-md-6">
             <div class="form-group">
                 <strong>ราคาสินค้า:</strong>
                 <input type="text" name="price" class="form-control" value="{{ $post->price }}" placeholder={{ $post->price }}>
@@ -48,7 +54,7 @@
                @enderror
             </div>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="col-xs-12 col-sm-12 col-md-6">
             <div class="form-group">
                 <strong>จำนวนสินค้า:</strong>
                 <input type="text" name="amount" class="form-control" value="{{ $post->amount }}" placeholder={{ $post->amount }}>
@@ -59,7 +65,7 @@
         </div>
         {{-- Time  --}}
         <form>
-            <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="col-xs-12 col-sm-12 col-md-3">
                 <label for="party"><strong>กำหนดวันในการสั่งซื้อ:</strong>
                     <input type="date" value="{{ $post->date }}" name="date" class="form-control">
                 </label>
@@ -84,7 +90,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>เพิ่มรูปสินค้า:</strong>
-                 <input type="file" name="image" class="form-control" value="" placeholder="Post Title">
+                 <input type="file" name="image" class="" value="" placeholder="Post Title">
                 @error('image')
                   <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                @enderror
@@ -97,9 +103,11 @@
             </div>
         
         </div>
+        <div class="pull-left">
+            <a class="btn btn-info" href="{{ route('index') }}" class="float-none"> ย้อนกลับ</a>  
+        </div>
         <div class="pull-right">
-            <a class="btn btn-primary" href="{{ route('index') }}" enctype="multipart/form-data"> ย้อนกลับ</a>
-            <button type="submit" class="btn btn-warning">อัพเดตสินค้า</button>
+            <button type="submit" class="btn btn-warning" class="pull-right">อัปเดต</button>
         </div>
             
               
@@ -111,3 +119,4 @@
 
 </body>
 </html>
+@endsection

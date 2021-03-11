@@ -16,7 +16,7 @@
                 <h2>Laravel 8 Post CRUD Tutorial</h2>
             </div>
             <div class="pull-right mb-2">
-                <a class="btn btn-success" href="{{ route('posts.create') }}"> Create New Post</a>
+                {{-- <a class="btn btn-success" href="{{ route('posts.create') }}"> Create New Post</a> --}}
             </div>
         </div>
     </div>

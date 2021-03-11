@@ -37,7 +37,9 @@ class PostCRUDController extends Controller
      */
     public function create()
     {
-        return view('posts.create');
+        $id = Auth::user()->id;
+        $countAlert = Alert::where('orders_id',$id)->count();
+        return view('posts.create')->with('countAlert' ,$countAlert);
     }
 
     /**
@@ -120,7 +122,9 @@ class PostCRUDController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('posts.edit',compact('post'));
+        $id = Auth::user()->id;
+        $countAlert = Alert::where('orders_id',$id)->count();
+        return view('posts.edit',compact('post'))->with('countAlert' ,$countAlert);
     }
 
     /**

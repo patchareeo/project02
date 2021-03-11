@@ -45,25 +45,25 @@ class AlertController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        $validator = Validator::make($request->all(), [
-            'amount' => 'required',
-            'detail' => 'required',
-        ]);
+    // {
+    //     $validator = Validator::make($request->all(), [
+    //         'amount' => 'required',
+    //         'detail' => 'required',
+    //     ]);
 
-        $productId = $request->id;
-        $post = new Alert;
-        $post->amount = $request->input('amount');
-        $post->detail = $request->input('detail');
-        $post->user_id = 1;
-        $post->post_id = $productId;
-        $post->orders_id = $productId;
+    //     $productId = $request->id;
+    //     $post = new Alert;
+    //     $post->amount = $request->input('amount');
+    //     $post->detail = $request->input('detail');
+    //     $post->user_id = 1;
+    //     $post->post_id = $productId;
+    //     $post->orders_id = $productId;
 
-        $post->save();
+    //     $post->save();
       
-        // return retdirect()->back();
-        return redirect()->route('page.alert')
-                        ->with('success','Data Saved');
+    //     return retdirect()->back();
+    //     return redirect()->route('page.alert')
+    //                     ->with('success','Data Saved');
     }
 
     /**

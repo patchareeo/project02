@@ -27,7 +27,8 @@
 					<div class="features_items">
                         <div class="col-xs-12 col-sm-12 col-md-8">
                             <div class="form-group">
-                                <div>ชื่อผู้โพสต์ : {{ $details->user_name }}</div>
+                                {{-- {{ $details->user_id }} --}}
+                                <div>ชื่อผู้โพสต์ : <a href="{{route('page.contact', $details->user_id)}}">{{ $details->user_name }} </a></div>
                             </div>
                             <div class="form-group">
                                 <img src="{{ Storage::url($details->image) }}" alt="Girl in a jacket" width="400" height="425" />
@@ -171,6 +172,7 @@
                                 </ul>
                             </div>
                         </div>
+                        
 
 					</div>
 							 

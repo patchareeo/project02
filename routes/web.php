@@ -47,11 +47,12 @@ Route::get('/alert', [AlertController::class, 'index'])->name('page.alert');
 Route::get('/sale', [HomeCRUDController::class, 'sale'])->name('page.sale');
 Route::get('/cart', [HomeCRUDController::class, 'cart'])->name('page.cart');
 Route::delete('/order/{id}', [HomeCRUDController::class, 'destroy'])->name('order.destroy');
+// Route::delete('/user/{id}', [HomeCRUDController::class, 'destroy'])->name('user.destroy');
 // Route::get('status', [HomeCRUDController::class, 'status'])->name('alert.status');
-// Route::get('/search', [HomeCRUDController::class, 'search']);
+
 Route::post('/search', [HomeCRUDController::class, 'searchProduct'])->name('search');
-
-
+Route::get('/profile', [HomeCRUDController::class, 'profile'])->name('page.profile');
+Route::get('/contact/{user_id}', [HomeCRUDController::class, 'contact'])->name('page.contact');
 
 Route::get('/article/{post:slug}', [PostController::class, 'show'])->name('post.show');
 
@@ -84,9 +85,9 @@ Route::get('/blog', function () {
     return view('page/blog');
 })->name('blog');
 
-Route::get('/profile', function () {
-    return view('page/profile');
-})->name('profile');
+// Route::get('/profile', function () {
+//     return view('page/profile');
+// })->name('profile');
 
 Route::get('/checkout', function () {
     return view('page/checkout');
