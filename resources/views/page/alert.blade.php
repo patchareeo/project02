@@ -27,16 +27,32 @@
                                         <p>รายละเอียด :{{ $alert->detail }}</p>
                                         <br>
 
-										<form action="{{ route('404') }}" method="get">
-                                        <button type="submit" class="btn btn-warning"
-										onclick="return confirm('ต้องการรับฝากหิ้วสินค้าใช่หรือไม่ ?')">ยืนยันสั่งสินค้า</button>
-									</form>
-                                    <br>
-                                    <form action="{{ route('404') }}" method="get">
-                                        <button type="submit" class="btn btn-warning"
-                                            onclick="return confirm('ต้องการยกเลิกสินค้าใช่หรือไม่ ?')">ยกเลิกสินค้า</button>
-                                    </form>
+                                        <form action="{{ route('page.alert') }}" method="get">
+                                        
+                                            <button type="submit" class="btn btn-warning"
+                                                onclick="return confirm('ต้องการรับฝากหิ้วสินค้าใช่หรือไม่ ?')">ยืนยัน</button>
+    
+                                                <button type="submit" class="btn btn-warning"
+                                                onclick="return confirm('ต้องการยกเลิกสินค้าใช่หรือไม่ ?')">ยกเลิก</button>
+                                            </form>
 
+                                            
+										{{-- <form action="{{ route('page.alert') }}" method="get">
+                                            
+                                        <button type="submit" class="btn btn-warning"
+										    onclick="return confirm('ต้องการรับฝากหิ้วสินค้าใช่หรือไม่ ?')">ยืนยัน</button>
+
+                                            <button type="submit" class="btn btn-warning"
+                                            onclick="return confirm('ต้องการยกเลิกสินค้าใช่หรือไม่ ?')">ยกเลิก</button>
+									    </form> --}}
+
+
+                                        {{-- <br> --}}
+                                        {{-- <form action="{{ route('page.alert') }}" method="get">
+                                        <button type="submit" class="btn btn-warning"
+                                            onclick="return confirm('ต้องการยกเลิกสินค้าใช่หรือไม่ ?')">ยกเลิก</button>
+                                        </form> --}}
+                                       
                                     </div>
 
                                 </div>
@@ -48,6 +64,30 @@
 
 
                 @endforeach
+
+                {{-- HTML
+                --------
+                <button type='submit'>
+                <img src="path\to\loading\gif"  id='shown' style="display:none"/ >
+                <span id='hidden'>submit</span>
+                <span id='shown'>loading!</span>
+                </button>
+                
+                within the button
+                
+                JQuery
+                -----------
+                <script>
+                $(document).ready(function(){
+                $('#hidden').show();
+                $('#shown').hide();
+                $('button').click(function(){
+                
+                $('#hidden').hide();
+                $('#shown').show();
+                });});
+                </script> --}}
+            
 
                 {{-- @if (Auth::user())
 				@if (Auth::user()->user_name !== $alert->user_name)

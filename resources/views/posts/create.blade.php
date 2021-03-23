@@ -35,7 +35,7 @@
         <div class="col-xs-12 col-sm-12 col-md-6">
             <div class="form-group">
                 <strong>ชื่อสินค้า:</strong>
-                <input type="text" name="name" class="form-control" placeholder="ชื่อสินค้า">
+                <input type="text" name="name" class="form-control" placeholder="ชื่อสินค้า" required>
                @error('name')
                   <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                @enderror
@@ -44,7 +44,7 @@
         <div class="col-xs-12 col-sm-12 col-md-6">
             <div class="form-group">
                 <strong>ราคาสินค้า:</strong>
-                <input type="text" name="price" class="form-control" placeholder="ราคาสินค้า">
+                <input type="text" name="price" class="form-control" placeholder="ราคาสินค้า" required>
                @error('price')
                   <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                @enderror
@@ -53,7 +53,7 @@
         <div class="col-xs-12 col-sm-12 col-md-6">
             <div class="form-group">
                 <strong>จำนวนสินค้า:</strong>
-                <input type="text" name="amount" class="form-control" placeholder="จำนวนสินค้า">
+                <input type="text" name="amount" class="form-control" placeholder="จำนวนสินค้า" required>
                @error('amount')
                   <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                @enderror
@@ -63,14 +63,14 @@
         <form>
             <div class="col-xs-12 col-sm-12 col-md-3">
                 <label for="party"><strong>กำหนดวันในการสั่งซื้อ:</strong>
-                    <input type="date" value="Y-D-M" name="date" class="form-control">
+                    <input type="date" value="Y-D-M" name="date" class="form-control" required>
                 </label>
             </div>
         </form>
 
         <div class="col-xs-12 col-sm-12 col-md-3">
             <strong>กำหนดระยะเวลาในการสั่งซื้อ:</strong>
-            <input type="time" id="input-limited-range" name="time" class="form-control">
+            <input type="time" id="input-limited-range" name="time" class="form-control" required>
             <label for="form1" class=""></label> 
         </div>
 
@@ -78,7 +78,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>รายละเอียดเพิ่มเติม:</strong>
-                <textarea class="form-control" style="height:150px" name="detail" placeholder="รายละเอียดเพิ่มเติม"></textarea>
+                <textarea class="form-control" style="height:150px" name="detail" placeholder="รายละเอียดเพิ่มเติม" required></textarea>
                 @error('detail')
                   <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                 @enderror
@@ -87,7 +87,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>เพิ่มรูปสินค้า:</strong>
-                 <input type="file" name="image" class="" placeholder="Post Title">
+                 <input type="file" name="image" class="" placeholder="Post Title" required>
                 @error('image')
                   <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                @enderror

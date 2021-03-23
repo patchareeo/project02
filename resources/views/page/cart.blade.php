@@ -43,14 +43,14 @@
                                         <p>{{ $order->created_at }}</p>
                                     </td>
                                     <td class="cart_price">
-                                        <p>{{ $order->product_price }}</p>
+                                        <p>{{ $order->product_price * $order->amount }}</p>
                                     </td>
                                     <td class="cart_quantity">
                                         <p>{{ $order->amount }}</p>
                                     </td>
                                     <td class="status">
-                                        <p>รอการยืนยัน</p>
-                                        {{-- <p>{{ $order->status }}</p> --}}
+                                        {{-- <p>รอการยืนยัน</p> --}}
+                                        <p>{{ $order->status }}</p>
                                     </td>
                                     {{-- <td class="cart_quantity">
 								<div class="cart_quantity_button">

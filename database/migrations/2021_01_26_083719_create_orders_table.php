@@ -18,7 +18,7 @@ class CreateOrdersTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->string('user_name');
             $table->integer('post_id')->unsigned();
-            $table->string('amount');
+            $table->integer('amount');
             $table->text('detail');
 
             $table->string('product_name');

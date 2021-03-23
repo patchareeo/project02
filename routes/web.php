@@ -7,7 +7,7 @@ use App\Http\Controllers\HomeCRUDController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\AlertController;
-use App\Http\Controllers\OrderController;
+// use App\Http\Controllers\OrderController;
 
 use App\Models\Post;
 use App\Models\Alert;
@@ -52,6 +52,8 @@ Route::delete('/order/{id}', [HomeCRUDController::class, 'destroy'])->name('orde
 
 Route::post('/search', [HomeCRUDController::class, 'searchProduct'])->name('search');
 Route::get('/profile', [HomeCRUDController::class, 'profile'])->name('page.profile');
+Route::get('/profile/{id}', [HomeCRUDController::class, 'editprofile'])->name('page.edit-profile');
+Route::put('/updateprofile/{id}', [HomeCRUDController::class, 'updateprofile'])->name('page.updateprofile');
 Route::get('/contact/{user_id}', [HomeCRUDController::class, 'contact'])->name('page.contact');
 
 Route::get('/article/{post:slug}', [PostController::class, 'show'])->name('post.show');

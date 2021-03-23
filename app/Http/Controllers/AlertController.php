@@ -45,7 +45,7 @@ class AlertController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    // {
+    {
     //     $validator = Validator::make($request->all(), [
     //         'amount' => 'required',
     //         'detail' => 'required',

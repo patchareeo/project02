@@ -115,11 +115,11 @@
                                 <form>
                                 <div class="form-group">
                                     <label for="recipient-name" class="col-form-label">จำนวนสินค้า:</label>
-                                    <input type="text" class="form-control" name="amount" id="recipient-name">
+                                    <input type="text" class="form-control" name="amount" id="recipient-name" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="text" class="col-form-label">รายละเอียดเพิ่มเติม:</label>
-                                    <textarea class="form-control" name="detail" id="text"></textarea>
+                                    <textarea class="form-control" name="detail" id="text" required></textarea>
                                 </div>
                                 </form>
                             </div>

@@ -34,8 +34,9 @@
                         @foreach ($posts as $post)
                             <div class="col-sm-3">
                                 <div class="product-image-wrapper">
-                                    <div class="single-products">
-                                        <div class="productinfo text-center">
+                                {{-- <div class="btn btn-default add-to-cart product-image-wrapper" style="min-width: 20rem; margin:6px"> --}}
+                                    <div class="single-products" >
+                                        <div class="productinfo text-center" >
                                             <img src="{{ Storage::url($post->image) }}" alt="Girl in a jacket"
                                                 width="150" height="250" />
                                             <h2>{{ $post->price }}</h2>
