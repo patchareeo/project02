@@ -47,12 +47,12 @@ class HomeCRUDController extends Controller
         return view("page.search")->with('products',$products)->with('countAlert' ,$countAlert);
     }
 
-    public function sale($id)
+    public function sale()
     {
         // $posts = Post::orderBy('id', 'DESC')->get();
         // $Sale = Post::orderBy('id', 'DESC')->get();
         $Alerts = Alert::orderBy('id', 'DESC')->get();
-        // $id = Auth::user()->id;
+        $id = Auth::user()->id;
         $Sale = Post::where('user_id',$id)->get();
         // $countAlert = Alert::all()->count();
         $countAlert = Alert::where('orders_id',$id)->count();
