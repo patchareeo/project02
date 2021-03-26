@@ -200,7 +200,7 @@ class HomeCRUDController extends Controller
         $post->product_name = $name;
         $post->product_price = $price;
         $post->product_image = $image;
-        $post->status = 'order';
+        $post->status = 'รอการยืนยัน';
         
         // $post->product_slug = $slug;
         // $post->product_date = $date;
@@ -218,6 +218,7 @@ class HomeCRUDController extends Controller
         $alert->user_name = Auth::user()->name;
         $alert->product_name = $name;
         $alert->product_price = $price;
+        $alert->status = 'รอการยืนยัน';
         // $alert->product_slug = $slug;
         // $alert->product_image = $image;
         // $alert->product_date = $date;

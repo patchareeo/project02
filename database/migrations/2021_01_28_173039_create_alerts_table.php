@@ -28,6 +28,7 @@ class CreateAlertsTable extends Migration
             // $table->string('product_image');
             // $table->string('product_date');
             // $table->text('time');
+            $table->string('status');
             $table->timestamps();
         });
     }

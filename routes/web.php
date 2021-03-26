@@ -12,6 +12,7 @@ use App\Http\Controllers\AlertController;
 use App\Models\Post;
 use App\Models\Alert;
 use App\Models\orders;
+use Carbon\Carbon;
 
 
 // Route::get('/', function () {
@@ -19,7 +20,8 @@ use App\Models\orders;
 // });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    $data['posts'] = Post::orderBy('id','desc')->paginate(5);
+    $data['posts'] = Post::where('date','>=',Carbon::now()->format('Y-m-d'))->orderBy('id', 'DESC')->paginate(5);
+    // $data['posts'] = Post::orderBy('id','desc')->paginate(5);
     // $countAlert = Alert::all()->count();
     $id = Auth::user()->id;
     $countAlert = Alert::where('orders_id',$id)->count();
