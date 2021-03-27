@@ -8,6 +8,8 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\AlertController;
 // use App\Http\Controllers\OrderController;
+use App\Http\Livewire\Admin\AdminDashboardComponent;
+use App\Http\Livewire\User\UserDashboardComponent;
 
 use App\Models\Post;
 use App\Models\Alert;
@@ -19,18 +21,19 @@ use Carbon\Carbon;
 //     return view('welcome');
 // });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    $data['posts'] = Post::where('date','>=',Carbon::now()->format('Y-m-d'))->orderBy('id', 'DESC')->paginate(5);
-    // $data['posts'] = Post::orderBy('id','desc')->paginate(5);
-    // $countAlert = Alert::all()->count();
-    $id = Auth::user()->id;
-    $countAlert = Alert::where('orders_id',$id)->count();
-   
+//เอา
+// Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+//     $data['posts'] = Post::where('date','>=',Carbon::now()->format('Y-m-d'))->orderBy('id', 'DESC')->paginate(5);
+//     $id = Auth::user()->id;
+//     $countAlert = Alert::where('orders_id',$id)->count();
+       
+//     return view('page.home', $data)->with('countAlert' ,$countAlert);
+// })->name('dashboard');
 
-    // dd( Auth::user());
-    return view('page.home', $data)->with('countAlert' ,$countAlert);
-    // return view('dashboard');
-})->name('dashboard');
+// dd( Auth::user());
+// return view('dashboard');
+// $data['posts'] = Post::orderBy('id','desc')->paginate(5);
+// $countAlert = Alert::all()->count();
  
 // Route::resource('products', ProductController::class);
 
@@ -50,7 +53,9 @@ Route::get('/sale', [HomeCRUDController::class, 'sale'])->name('page.sale');
 Route::get('/cart', [HomeCRUDController::class, 'cart'])->name('page.cart');
 Route::delete('/order/{id}', [HomeCRUDController::class, 'destroy'])->name('order.destroy');
 // Route::delete('/user/{id}', [HomeCRUDController::class, 'destroy'])->name('user.destroy');
-// Route::get('status', [HomeCRUDController::class, 'status'])->name('alert.status');
+Route::delete('/deleteuser/{id}', [HomeCRUDController::class, 'deleteuser'])->name('user.destroy');
+
+Route::get('status', [AlertController::class, 'status'])->name('alert.status');
 
 Route::post('/search', [HomeCRUDController::class, 'searchProduct'])->name('search');
 Route::get('/profile', [HomeCRUDController::class, 'profile'])->name('page.profile');
@@ -66,6 +71,19 @@ Route::get('/article/{post:slug}', [PostController::class, 'show'])->name('post.
 Route::post('/comment/store', [CommentController::class, 'store'])->name('comment.add');
 Route::post('/reply/store', [CommentController::class, 'replyStore'])->name('reply.add');
 Route::delete('/comment/{id}', [CommentController::class, 'destroy'])->name('comment.destroy');
+
+// For User or Customer
+Route::middleware(['auth:sanctum', 'verified'])->group(function(){
+    Route::get('/user/dashboard', UserDashboardComponent::class)->name('user.dashboard');
+ 
+});
+ 
+// For Admin
+Route::middleware(['auth:sanctum', 'verified', 'authadmin'])->group(function(){
+    Route::get('/admin/dashboard', AdminDashboardComponent::class)->name('admin.dashboard');
+ 
+});
+
 
 // Route::get('/alert', function () {
 //     return view('page/alert');

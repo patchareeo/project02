@@ -8,8 +8,8 @@
 
     <div class="row">
         <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
-                <h2>แก้ไขโปรไฟล์</h2>
+            <div class="">
+                <h2 class="title text-center">แก้ไขโปรไฟล์</h2>
             </div>
             
         </div>

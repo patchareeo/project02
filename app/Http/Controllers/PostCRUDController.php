@@ -55,7 +55,7 @@ class PostCRUDController extends Controller
             'price' => 'required',
             'amount' => 'required',
             'date' => 'required',
-            'time' => 'required',
+            // 'time' => 'required',
             'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
             'detail' => 'required',
         ]);
@@ -90,7 +90,7 @@ class PostCRUDController extends Controller
         $post->price = $request->price;
         $post->amount = $request->amount;
         $post->date = $request->date;
-        $post->time = $request->time;
+        // $post->time = $request->time;
         $post->detail = $request->detail;
         $post->image = $path;
         $post->user_id = Auth::user()->id;
@@ -142,7 +142,7 @@ class PostCRUDController extends Controller
             'amount' => 'required',
             'detail' => 'required',
             'date' => 'required',
-            'time' => 'required',
+            // 'time' => 'required',
         ]);
         
         $post = Post::find($id);
@@ -158,7 +158,7 @@ class PostCRUDController extends Controller
         $post->amount = $request->amount;
         $post->detail = $request->detail;
         $post->date = $request->date;
-        $post->time = $request->time;
+        // $post->time = $request->time;
         $post->save();
     
         return redirect()->route('page.showpost', ['id' => $post])

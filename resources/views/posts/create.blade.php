@@ -61,18 +61,18 @@
         </div>
         {{-- Time  --}}
         <form>
-            <div class="col-xs-12 col-sm-12 col-md-3">
+            <div class="col-xs-6 col-sm-6 col-md-6">
                 <label for="party"><strong>กำหนดวันในการสั่งซื้อ:</strong>
                     <input type="date" value="Y-D-M" name="date" class="form-control" required>
                 </label>
             </div>
         </form>
 
-        <div class="col-xs-12 col-sm-12 col-md-3">
+        {{-- <div class="col-xs-12 col-sm-12 col-md-3">
             <strong>กำหนดระยะเวลาในการสั่งซื้อ:</strong>
             <input type="time" id="input-limited-range" name="time" class="form-control" required>
             <label for="form1" class=""></label> 
-        </div>
+        </div> --}}
 
         {{-- Time  --}}
         <div class="col-xs-12 col-sm-12 col-md-12">

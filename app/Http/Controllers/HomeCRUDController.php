@@ -32,6 +32,7 @@ class HomeCRUDController extends Controller
         } else {
             $posts = Post::where('date','>=',Carbon::now()->format('Y-m-d'))->orderBy('id', 'DESC')->get();
             return view('page.home')->with(compact('posts'));
+            
         }
        
 
@@ -243,13 +244,7 @@ class HomeCRUDController extends Controller
         return view('page.cart')->with(compact('cart'))->with('countAlert' ,$countAlert);
     }
 
-    public function status(Request $request){
 
-        // dd($request);
-        $order = orders::orderBy('id', 'DESC')->get();
-        // $order->product_price = $price;
-
-    }
 
     /**
      * Display the specified resource.
@@ -308,6 +303,7 @@ class HomeCRUDController extends Controller
         $Alerts ->delete();
         $order = orders::findOrFail($id);
         $order->delete();
+        
           
         // $user = User::findOrFail($id);
         // $user->delete();
@@ -316,5 +312,13 @@ class HomeCRUDController extends Controller
         // dd(date("Y-m-d h:i"), $post->date . ' ' . $post->time);
         // dd($order);
         return redirect()->back();
+    }
+    public function deleteuser($id){
+        $user = User::find($id);
+        $user->delete();
+        $order = orders::findOrFail($id);
+        $order->delete();
+        // dd($user);
+        return view('page.home')->with(compact('user'))->with(compact('order'));
     }
 }

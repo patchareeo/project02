@@ -63,12 +63,12 @@
                                 {{ $details->date}}
                             </div>
                         </div>
-                        <div class="col-xs-12 col-sm-12 col-md-4">
+                        {{-- <div class="col-xs-12 col-sm-12 col-md-4">
                             <div class="form-group">
                                 <strong>กำหนดระยะเวลาในการสั่งซื้อ :</strong>
                                 {{ $details->time}}
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="col-xs-12 col-sm-12 col-md-4">
                             <div class="form-group">
                                 <strong>รายละเอียดสินค้า :</strong>
@@ -85,12 +85,23 @@
            
                             @csrf
                             @method('DELETE')
-              
                             <button type="submit" class="btn btn-danger" onclick="return confirm('ต้องการลบสินค้าใช่หรือไม่ ?')">Delete</button>
                         </form>
                         @endif
                         @endif
                     </div>
+
+                    @if (Auth::user())
+                    @if (Auth::user()->role === 'admin')
+                        <form action="{{ route('posts.destroy', $details->id) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger"
+                                onclick="return confirm('ต้องการลบสินค้าใช่หรือไม่ ?')">Delete</button>
+
+                        </form>
+                    @endif
+                @endif
 
 
                         {{-- popup --}}
@@ -99,7 +110,9 @@
                          {{ csrf_field() }}
                          @if (Auth::user())
                          @if (Auth::user()->name != $details->user_name)
+                         @if (Auth::user()->role != 'admin')
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" >สั่งสินค้า</button>
+                        @endif
                         @endif
                         @endif
                         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

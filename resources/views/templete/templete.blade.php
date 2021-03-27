@@ -45,7 +45,7 @@
 									<div class="container-fluid">
 										<div class="collapse navbar-collapse" id="navbarSupportedContent">
 											<ul>
-												@if (Auth::user() == true)
+												{{-- @if (Auth::user() == true)
 												<li><div><a href="{{route('page.profile')}}"><div>{{ Auth::user()->name }}</a></div></li>
 												<li>
 													<form method="POST" action="{{ route('logout') }}">
@@ -60,8 +60,55 @@
 													@else
 														<li><a href="{{route('login')}}"><i class="fa fa-lock"></i> Login</a></li>
 														<li><a href="{{route('register')}}"><i class="fa fa-user"></i> Register</a></li>
-													@endif	
+													@endif --}}
+
+													{{-- test --}}
+													@if (Route::has('login'))
+													@auth
+														@if (Auth::user()->role === 'admin')
+														<li>
+															<li class="menu-item menu-item-has-children parent">
+																<img class="img-profile rounded-circle" src="https://developers.google.com/web/images/contributors/no-photo.jpg" height="30" width="30">
+																<a title="My Account" href="{{route('page.profile')}}">My Account: ({{Auth::user()->name}})<i class="" aria-hidden="true"></i></a>
+																{{-- {{-- <ul class="submenu curency"> --}}
+																	<li class="menu-item"> 
+																	<a href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+																	</li>
+																	<form id="logout-form" method="POST" action="{{route('logout')}}">
+																		@csrf
+																	</form>
+																</ul>
+															</li>
+														</li>
+														@else 
+														<li>
+															<li class="menu-item menu-item-has-children parent">
+																<img class="img-profile rounded-circle" src="https://developers.google.com/web/images/contributors/no-photo.jpg" height="30" width="30">
+																{{-- <img class="img-profile rounded-circle" src="{{ Storage::url($profile->image) }}" height="30" width="30"> --}}
+																<a title="My Account" href="{{route('page.profile')}}">My Account: {{Auth::user()->name}}<i class="" aria-hidden="true"></i></a>
+																{{-- <ul class="submenu curency"> --}}
+																	<li class="menu-item">
+																	<a href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+																	</li>
+																	<form id="logout-form" method="POST" action="{{route('logout')}}">
+																		@csrf
+																	</form>
+																</ul>
+															</li>
+														</li>
+														@endif  
+
+													@else
+													<li class="fa fa-lock"><a title="Register or Login" href="{{route('login')}}"> Login</a></li>
+													<li class="fa fa-user"><a title="Register or Login" href="{{route('register')}}"> Register</a></li>
+													@endif
+											@endif 
+
+									
+
+													
 											</ul>
+											
 										</div>
 										
 									

@@ -23,7 +23,7 @@ class CreatePostsTable extends Migration
             $table->string('image');
             $table->integer('amount');
             $table->string('date');
-            $table->text('time');
+            // $table->text('time');
             $table->text('detail');
             $table->timestamps();
         });

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Alert;
 use Auth;
+use App\Models\orders;
 
 class AlertController extends Controller
 {
@@ -26,6 +27,22 @@ class AlertController extends Controller
         // return view('page.alert', ['countAlert' => $countAlert])->with(compact('Alerts'));
         return view('page.alert')->with('countAlert' ,$countAlert)->with(compact('Alerts'));
         
+    }
+
+    public function status(Request $request){
+        // console.log("Message here");
+        // dd($request);
+        // $order = new orders();
+        
+        // $order = orders::orderBy('id', 'DESC')->get();
+            // $order->status = '0';
+            // $order->status = '1';
+            // $order->status = '2';
+            // dd($order);
+           
+            // $order->save();
+        // $order->product_price = $price;
+
     }
 
     /**
