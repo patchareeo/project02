@@ -9,14 +9,19 @@
             <div class="panel panel-default">
                 <div class="panel-body">
                     <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
-                        <img alt="User Pic" src="https://developers.google.com/web/images/contributors/no-photo.jpg"
-                            id="contact-image1" class="img-circle img-responsive">
+                        @if ($contact->image === null)
+                            <img alt="User Pic" src="https://developers.google.com/web/images/contributors/no-photo.jpg"
+                                id="profile-image1" class="img-circle img-responsive">
+                        @else
+                            <img src="{{ Storage::url($contact->image) }}" height="350" width="350" alt="" />
+                        @endif
                     </div>
 
 
                     @if (Auth::user())
                         @if (Auth::user()->role === 'admin')
-                            <form action="{{ route('user.destroy',$contact->id ) }}" method="POST">
+                            {{-- {{ $contact->id }} --}}
+                            <form action="{{ route('user.destroy', $contact->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="pull-right"

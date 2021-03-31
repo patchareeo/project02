@@ -18,7 +18,6 @@
                             @else
                                 <img src="{{ Storage::url($profile->image) }}" height="350" width="350" alt="" />
                             @endif
-
                         </div>
 
                         <a type="submit" class="pull-right" href="{{ route('page.edit-profile', Auth::user()->id) }}">Edit</a>

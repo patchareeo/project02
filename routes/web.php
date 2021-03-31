@@ -55,7 +55,7 @@ Route::delete('/order/{id}', [HomeCRUDController::class, 'destroy'])->name('orde
 // Route::delete('/user/{id}', [HomeCRUDController::class, 'destroy'])->name('user.destroy');
 Route::delete('/deleteuser/{id}', [HomeCRUDController::class, 'deleteuser'])->name('user.destroy');
 
-Route::get('status', [AlertController::class, 'status'])->name('alert.status');
+Route::post('status', [AlertController::class, 'status'])->name('alert.status');
 
 Route::post('/search', [HomeCRUDController::class, 'searchProduct'])->name('search');
 Route::get('/profile', [HomeCRUDController::class, 'profile'])->name('page.profile');

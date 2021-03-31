@@ -33,14 +33,41 @@ class AlertController extends Controller
         // console.log("Message here");
         // dd($request);
         // $order = new orders();
+        // dd($request);
+
+        // $user_id='user_id';
+        // $user_name='user_name';
+        // $post_id='post_id';
+        // $amount='amount';
+        // $detail='detail';
+        // $product_name='product_name';
+        // $product_price='product_price';
+        // $product_image='product_image';
+        // $status='status';
+
+
+        // $id = Auth::user()->id;
+        // $updatestatus = orders::findOrFail('id');
+        $updatestatus = new orders;
+        $updatestatus->amount = $request->amount;
+        $updatestatus->detail = $request->detail;
+        $updatestatus->user_id = Auth::user()->id;
+        $updatestatus->user_name = Auth::user()->name;
+        $updatestatus->post_id = $request->productId;
+        $updatestatus->product_name = $request->product_name;
+        $updatestatus->product_price = $request->product_price;
+        $updatestatus->product_image = $request->product_image;
+        $updatestatus->status = 'รอการยืนยัน';
+        dd($updatestatus);
+
+
         
-        // $order = orders::orderBy('id', 'DESC')->get();
+
             // $order->status = '0';
             // $order->status = '1';
-            // $order->status = '2';
-            // dd($order);
+            // $order->status = '2'; 
            
-            // $order->save();
+        $updatestatus->save();
         // $order->product_price = $price;
 
     }

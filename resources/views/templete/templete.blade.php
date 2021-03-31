@@ -68,8 +68,12 @@
 														@if (Auth::user()->role === 'admin')
 														<li>
 															<li class="menu-item menu-item-has-children parent">
-																<img class="img-profile rounded-circle" src="https://developers.google.com/web/images/contributors/no-photo.jpg" height="30" width="30">
-																<a title="My Account" href="{{route('page.profile')}}">My Account: ({{Auth::user()->name}})<i class="" aria-hidden="true"></i></a>
+															@if (Auth::user()->image === null)
+																<img alt="" src="https://developers.google.com/web/images/contributors/no-photo.jpg" height="30" width="30">
+															@else
+																<img src="{{ Storage::url(Auth::user()->image) }}" height="30" width="30" alt="" />
+															@endif
+																<a title="My Account" href="{{route('page.profile')}}">My Account: {{Auth::user()->name}}<i class="" aria-hidden="true"></i></a>
 																{{-- {{-- <ul class="submenu curency"> --}}
 																	<li class="menu-item"> 
 																	<a href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
@@ -83,9 +87,12 @@
 														@else 
 														<li>
 															<li class="menu-item menu-item-has-children parent">
-																<img class="img-profile rounded-circle" src="https://developers.google.com/web/images/contributors/no-photo.jpg" height="30" width="30">
-																{{-- <img class="img-profile rounded-circle" src="{{ Storage::url($profile->image) }}" height="30" width="30"> --}}
-																<a title="My Account" href="{{route('page.profile')}}">My Account: {{Auth::user()->name}}<i class="" aria-hidden="true"></i></a>
+															@if (Auth::user()->image === null)
+																<img alt="" src="https://developers.google.com/web/images/contributors/no-photo.jpg" height="30" width="30">
+															@else
+																<img src="{{ Storage::url(Auth::user()->image) }}" height="30" width="30" alt="" />
+															@endif
+																<a title="My Account" href="{{route('page.profile')}}"> {{Auth::user()->name}}<i class="" aria-hidden="true"></i></a>
 																{{-- <ul class="submenu curency"> --}}
 																	<li class="menu-item">
 																	<a href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>

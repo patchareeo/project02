@@ -5,6 +5,8 @@
             <img src="images/home/nea3.png" alt="Girl in a jacket" width="150" height="100">
         </x-slot>
 
+        <p class="text-center font-weight-bold">เข้าสู่ระบบ</p>
+        <br>
         <x-jet-validation-errors class="mb-4" />
 
         @if (session('status'))

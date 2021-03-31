@@ -27,14 +27,14 @@
                                         <p>รายละเอียด :{{ $alert->detail }}</p>
                                         <br>
 
-                                        <form action="{{ route('page.alert') }}" method="get">
-                                        
-                                            <button type="submit" class="btn btn-warning"
+                                        <form action="{{ route('page.alert') }}" method="get" name ="status">
+                                            @csrf
+                                            <button type="submit" class="btn btn-warning" value="Yes"
                                                 onclick="return confirm('ต้องการรับฝากหิ้วสินค้าใช่หรือไม่ ?')">ยืนยัน</button>
     
-                                                <button type="submit" class="btn btn-warning"
+                                                <button type="submit" class="btn btn-warning" value="No"
                                                 onclick="return confirm('ต้องการยกเลิกสินค้าใช่หรือไม่ ?')">ยกเลิก</button>
-                                            </form>
+                                        </form>
 
                                             
 										{{-- <form action="{{ route('page.alert') }}" method="get">

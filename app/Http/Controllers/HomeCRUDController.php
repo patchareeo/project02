@@ -10,6 +10,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Validator;
 use Carbon\Carbon;
 use Auth;
+use Illuminate\Support\Facades\DB;
 
  
 class HomeCRUDController extends Controller
@@ -125,6 +126,7 @@ class HomeCRUDController extends Controller
 
     public function contact($user_id)
     {
+        // dd($user_id);
         $contact = User::find($user_id);
         // dd($contact);
         // dd($contact); 
@@ -133,7 +135,7 @@ class HomeCRUDController extends Controller
         // $contact->contact_name = Auth::user()->name;
         // $contact->contact_email= Auth::user()->email;
         // $contact->contact_phone = Auth::user()->phone;
-        $id =Auth::user()->id;
+        $id = Auth::user()->id;
         $countAlert = Alert::where('orders_id',$id)->count();
 
         return view('page.contact')->with(compact('contact'))->with('countAlert' ,$countAlert);
@@ -314,11 +316,12 @@ class HomeCRUDController extends Controller
         return redirect()->back();
     }
     public function deleteuser($id){
-        $user = User::find($id);
+      
+        DB::table('posts')->where('user_id', $id)->delete();  
+        
+        $user = User::findOrFail($id);
         $user->delete();
-        $order = orders::findOrFail($id);
-        $order->delete();
-        // dd($user);
-        return view('page.home')->with(compact('user'))->with(compact('order'));
+        return redirect()->route('index')
+        ->with('success','Post has been deleted successfully');
     }
 }
