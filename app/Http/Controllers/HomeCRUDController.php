@@ -40,12 +40,14 @@ class HomeCRUDController extends Controller
     }
 
     public function searchProduct(Request $request) {
+
         // $products = Post::where('date','>=',Carbon::now()->format('Y-m-d'))->get();
         $name = "%" . $request->search . "%" ;
         $products = Post::where('name','LIKE', $name,)->get();
         $id = Auth::user()->id;
         $countAlert = Alert::where('orders_id',$id)->count();
         // dd($products);
+        
         return view("page.search")->with('products',$products)->with('countAlert' ,$countAlert);
     }
 
@@ -165,15 +167,7 @@ class HomeCRUDController extends Controller
         $orders = Post::where('id',$id)->get();
         // dd($orders);
         foreach ($orders as $order) {
-            // $id = $order->id;
-            // $user_id = $order->user_id;
-            // $user_name = $order->user_name;
-            // $name = $order->name;
-            // $price = $order->price;
-            // $detail = $order->detail;
-            // $status = $order->status;
-            // $date = $order->date;
-            // $slug = $order->slug;
+           
             $id = $order->id;
             $user_id = $order->user_id;
             $user_name = $order->user_name;

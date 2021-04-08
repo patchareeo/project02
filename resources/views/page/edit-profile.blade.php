@@ -9,7 +9,7 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="">
-                <h2 class="title text-center">แก้ไขโปรไฟล์</h2>
+                <h2 class="title text-center">แก้ไขโปรไฟล์ของฉัน</h2>
             </div>
             
         </div>

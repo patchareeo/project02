@@ -18,10 +18,7 @@
 
     <div class="row">
         <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
-                <h2>Edit Post</h2>
-            </div>
-            
+                <h2 class="title text-center">แก้ไขรายการสินค้า</h2>
         </div>
     </div>
    
@@ -48,7 +45,7 @@
         <div class="col-xs-12 col-sm-12 col-md-6">
             <div class="form-group">
                 <strong>ราคาสินค้า:</strong>
-                <input type="text" name="price" class="form-control" value="{{ $post->price }}" placeholder={{ $post->price }}>
+                <input type="number" name="price" class="form-control" value="{{ $post->price }}" placeholder={{ $post->price }}>
                @error('price')
                   <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                @enderror
@@ -57,7 +54,7 @@
         <div class="col-xs-12 col-sm-12 col-md-6">
             <div class="form-group">
                 <strong>จำนวนสินค้า:</strong>
-                <input type="text" name="amount" class="form-control" value="{{ $post->amount }}" placeholder={{ $post->amount }}>
+                <input type="number" name="amount" class="form-control" value="{{ $post->amount }}" placeholder={{ $post->amount }}>
                @error('amount')
                   <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                @enderror
@@ -65,18 +62,18 @@
         </div>
         {{-- Time  --}}
         <form>
-            <div class="col-xs-12 col-sm-12 col-md-3">
+            <div class="col-xs-12 col-sm-12 col-md-6">
                 <label for="party"><strong>กำหนดวันในการสั่งซื้อ:</strong>
                     <input type="date" value="{{ $post->date }}" name="date" class="form-control">
                 </label>
             </div>
         </form>
 
-        <div class="col-xs-12 col-sm-12 col-md-3">
+        {{-- <div class="col-xs-12 col-sm-12 col-md-3">
             <strong>กำหนดระยะเวลาในการสั่งซื้อ:</strong>
             <input type="time" id="inputMDEx1" value="{{ $post->time }}" name="time" class="form-control">
             <label for="form1" class=""></label> 
-        </div>
+        </div> --}}
         {{-- Time  --}}
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">

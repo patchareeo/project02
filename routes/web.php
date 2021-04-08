@@ -55,7 +55,7 @@ Route::delete('/order/{id}', [HomeCRUDController::class, 'destroy'])->name('orde
 // Route::delete('/user/{id}', [HomeCRUDController::class, 'destroy'])->name('user.destroy');
 Route::delete('/deleteuser/{id}', [HomeCRUDController::class, 'deleteuser'])->name('user.destroy');
 
-Route::post('status', [AlertController::class, 'status'])->name('alert.status');
+Route::post('/status/{id}', [AlertController::class, 'status'])->name('alert.status');
 
 Route::post('/search', [HomeCRUDController::class, 'searchProduct'])->name('search');
 Route::get('/profile', [HomeCRUDController::class, 'profile'])->name('page.profile');
@@ -66,7 +66,6 @@ Route::get('/contact/{user_id}', [HomeCRUDController::class, 'contact'])->name('
 Route::get('/article/{post:slug}', [PostController::class, 'show'])->name('post.show');
 
 
-// Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () { });
 
 Route::post('/comment/store', [CommentController::class, 'store'])->name('comment.add');
 Route::post('/reply/store', [CommentController::class, 'replyStore'])->name('reply.add');

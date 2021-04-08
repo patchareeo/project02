@@ -44,7 +44,7 @@
         <div class="col-xs-12 col-sm-12 col-md-6">
             <div class="form-group">
                 <strong>ราคาสินค้า:</strong>
-                <input type="text" name="price" class="form-control" placeholder="ราคาสินค้า" required>
+                <input type="number" name="price" class="form-control" placeholder="ราคาสินค้า" required>
                @error('price')
                   <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                @enderror
@@ -53,7 +53,7 @@
         <div class="col-xs-12 col-sm-12 col-md-6">
             <div class="form-group">
                 <strong>จำนวนสินค้า:</strong>
-                <input type="text" name="amount" class="form-control" placeholder="จำนวนสินค้า" required>
+                <input type="number" name="amount" class="form-control" placeholder="จำนวนสินค้า" required>
                @error('amount')
                   <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                @enderror

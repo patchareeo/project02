@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Alert;
 use Auth;
 use App\Models\orders;
+use Illuminate\Support\Facades\DB;
 
 class AlertController extends Controller
 {
@@ -29,47 +30,62 @@ class AlertController extends Controller
         
     }
 
-    public function status(Request $request){
-        // console.log("Message here");
-        // dd($request);
-        // $order = new orders();
-        // dd($request);
-
-        // $user_id='user_id';
-        // $user_name='user_name';
-        // $post_id='post_id';
-        // $amount='amount';
-        // $detail='detail';
-        // $product_name='product_name';
-        // $product_price='product_price';
-        // $product_image='product_image';
-        // $status='status';
-
-
-        // $id = Auth::user()->id;
-        // $updatestatus = orders::findOrFail('id');
-        $updatestatus = new orders;
-        $updatestatus->amount = $request->amount;
-        $updatestatus->detail = $request->detail;
-        $updatestatus->user_id = Auth::user()->id;
-        $updatestatus->user_name = Auth::user()->name;
-        $updatestatus->post_id = $request->productId;
-        $updatestatus->product_name = $request->product_name;
-        $updatestatus->product_price = $request->product_price;
-        $updatestatus->product_image = $request->product_image;
-        $updatestatus->status = 'รอการยืนยัน';
-        dd($updatestatus);
-
-
+    public function status(Request $request,$id){
+   
+        // $updatestatus->status = $request->submit;
+        // $updatestatus->post_id = $request->post_id;
+        //  dd($request->submit);
+        // $order = orders::findOr(); 
+        // $orders = Alert::where('id',$id)->get();
+        // $orders->post_id = $orders->post_id;
         
+        
+        $orders = DB::table('alerts','orders')->where('id', $id)->get();
+        foreach ($orders as $order) {
+            // $updatestatus = new Alert;
+            $updatestatus = Alert::find($id);
+            $updatestatus->id = $id;
+            $updatestatus->post_id = $order->post_id;
+            $updatestatus->orders_id = $order->orders_id;
+            $updatestatus->user_id = $order->user_id;
+            $updatestatus->user_name = $order->user_name;
+            $updatestatus->amount = $order->amount;
+            $updatestatus->detail = $order->detail;
+            $updatestatus->product_name = $order->product_name;
+            $updatestatus->product_price = $order->product_price;
+            $updatestatus->status = $request->submit;
+            // dd($updatestatus);
+            $updatestatus->save();
 
-            // $order->status = '0';
-            // $order->status = '1';
-            // $order->status = '2'; 
+            $updatestatus = orders::find($id);
+            $updatestatus->id = $id;
+            $updatestatus->post_id = $order->post_id;
+            // $updatestatus->orders_id = $order->orders_id;
+            $updatestatus->user_id = $order->user_id;
+            $updatestatus->user_name = $order->user_name;
+            $updatestatus->amount = $order->amount;
+            $updatestatus->detail = $order->detail;
+            $updatestatus->product_name = $order->product_name;
+            $updatestatus->product_price = $order->product_price;
+            $updatestatus->status = $request->submit;
+            // dd($updatestatus);
+            $updatestatus->save();
+        }
+
+        // $updatestatus->id = $id;
+        // $updatestatus->post_id = $orders->post_id;
+        // $updatestatus->orders_id = $orders->orders_id;
+        // $updatestatus->user_id = $orders->user_id;
+        // $updatestatus->user_name = $orders->user_name;
+        // $updatestatus->amount = $orders->amount;
+        // $updatestatus->detail = $orders->detail;
+        // $updatestatus->product_name = $orders->product_name;
+        // $updatestatus->product_price = $orders->product_price;
+        // $updatestatus->status = $request->submit;
+
+        return redirect()->route('page.alert',['id' => $orders])     //->compact('orders',$orders)
+        ->with('success','Data Saved');
            
-        $updatestatus->save();
-        // $order->product_price = $price;
-
     }
 
     /**
@@ -106,8 +122,8 @@ class AlertController extends Controller
     //     $post->save();
       
     //     return retdirect()->back();
-    //     return redirect()->route('page.alert')
-    //                     ->with('success','Data Saved');
+        // return redirect()->route('page.alert')
+        //                 ->with('success','Data Saved');
     }
 
     /**

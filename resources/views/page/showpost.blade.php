@@ -128,7 +128,7 @@
                                 <form>
                                 <div class="form-group">
                                     <label for="recipient-name" class="col-form-label">จำนวนสินค้า:</label>
-                                    <input type="text" class="form-control" name="amount" id="recipient-name" required>
+                                    <input type="number" class="form-control" name="amount" id="recipient-name" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="text" class="col-form-label">รายละเอียดเพิ่มเติม:</label>
@@ -212,7 +212,7 @@
                             <form method="post" action="{{ route('comment.add') }}">
                                 @csrf
                                 <div class="form-group">
-                                    <input type="text" name="comment" class="form-control" />
+                                    <input type="text" name="comment" class="form-control" required/>
                                     <input type="hidden" name="post_id" value="{{ $details->id }}" />
                                     
                                 </div>
