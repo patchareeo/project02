@@ -2,7 +2,7 @@
     <x-jet-authentication-card>
         <x-slot name="logo">
             {{-- <x-jet-authentication-card-logo /> --}}
-            <img src="images/home/nea3.png" alt="Girl in a jacket" width="150" height="100">
+            <img src="images/home/nealogo.png" alt="Girl in a jacket" width="250" height="200">
         </x-slot>
 
         <p class="text-center font-weight-bold">ลงทะเบียน</p>

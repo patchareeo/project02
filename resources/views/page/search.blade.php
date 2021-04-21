@@ -3,6 +3,19 @@
 @section('title', 'Home |Heawnea')
 
 @section('content')
+<section id="slider">
+    <!--slider-->
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+
+            </div>
+        </div>
+    </div>
+</section>
+<!--/slider-->
+
+<section>
 
 <!DOCTYPE html>
 <html lang="en">

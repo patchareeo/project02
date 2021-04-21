@@ -4,6 +4,20 @@
 
 @section('content')
 
+<section id="slider">
+    <!--slider-->
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+
+            </div>
+        </div>
+    </div>
+</section>
+<!--/slider-->
+
+<section>
+
 <div class="container mt-2">
 
     <div class="row">
@@ -18,9 +32,10 @@
     <form action="{{ route('page.updateprofile',$profile->id )}}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
-   
+        
+        {{-- <center> --}}
          <div class="row">
-         <div class="col-xs-12 col-sm-12 col-md-12">
+         <div class="col-xs-12 col-sm-12 col-md-9">
             <div class="form-group">
                 <strong>ชื่อ:</strong>
                 <input type="text" name="name" class="form-control" value="{{ $profile->name }}" placeholder={{ $profile->name}}>
@@ -28,8 +43,8 @@
                   <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                @enderror
             </div>
-        </div>   
-        <div class="col-xs-12 col-sm-12 col-md-12">
+        </div> 
+        <div class="col-xs-12 col-sm-12 col-md-9">
             <div class="form-group">
                 <strong>อีเมล:</strong>
                 <input type="text" name="email" class="form-control" value="{{ $profile->email }}" placeholder={{ $profile->email }}>
@@ -38,7 +53,7 @@
                @enderror
             </div>
         </div>  
-        <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="col-xs-12 col-sm-12 col-md-9">
             <div class="form-group">
                 <strong>เบอร์โทรศัพท์:</strong>
                 <input type="text" name="phone" class="form-control" value="{{ $profile->phone}}" placeholder={{ $profile->phone }}>
@@ -62,6 +77,7 @@
 
 
             </div>
+        {{-- </center> --}}
         
         </div>
         <div class="pull-left">

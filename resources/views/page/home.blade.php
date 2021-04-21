@@ -3,16 +3,6 @@
 @section('title', 'Home |Heawnea')
 
 @section('content')
-    <section>
-        <div class="container">
-            <div class="row">
-
-                @yield('content')
-                <!--  -->
-            </div>
-        </div>
-    </section>
-
     <section id="slider">
         <!--slider-->
         <div class="container">
@@ -28,15 +18,15 @@
     <section>
         <div class="container">
             <div class="row">
-                <div class="col-sm-12 padding-right">
-                    <div class="features_items">
+                <div class="col-sm-12 padding-right" style="background-color:#ffffff">
+                    <div class="features_items"  >
                         <h2 class="title text-center">รายการสินค้าทั้งหมด</h2>
                         @foreach ($posts as $post)
-                            <div class="col-sm-3">
+                            <div class="col-sm-3">   
                                 <div class="product-image-wrapper">
                                 {{-- <div class="btn btn-default add-to-cart product-image-wrapper" style="min-width: 20rem; margin:6px"> --}}
-                                    <div class="single-products" >
-                                        <div class="productinfo text-center" >
+                                    <div class="single-products"  >
+                                        <div class="productinfo text-center">
                                             <img src="{{ Storage::url($post->image) }}" alt="Girl in a jacket"
                                                 width="150" height="250" />
                                             <h2>{{ $post->price }}</h2>
@@ -61,10 +51,11 @@
             </div>
             <!--/recommended_items-->
             <ul class="pagination">
-                <li class="active"><a href="">1</a></li>
-                <li class="active"><a href="">2</a></li>
+                <li class="active">{!! $posts->links() !!}</li>
+                {{-- <li class="active"><a href="">2</a></li>
                 <li class="active"><a href="">3</a></li>
                 <li class="active"><a href="">&raquo;</a></li>
+                {!! $posts->links() !!} --}}
             </ul>
         </div>
         </div>

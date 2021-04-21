@@ -17,26 +17,28 @@
                 <input type="hidden" name="comment_id" value="{{ $comment->id }}" />
             </div>
             
-
+            <div class="form-group">
+    
+                <input type="submit" class="btn btn-sm btn-outline-danger py-0" style="font-size: 0.8em;" 
+                value="ตอบกลับ" />
+            </div>
+            
         </form>
-        <div class="form-group">
-
-            <input type="submit" class="btn btn-sm btn-outline-danger py-0" style="font-size: 0.8em;" 
-            value="ตอบกลับ" />
-        </div>
-
-            @if (Auth::user())
-            @if (Auth::user()->name === $comment->user->name )
-            <form action="{{ route('comment.destroy', $comment->id) }}" method="post">
-                    <div class="col-md">
-                        @csrf
-                        @method('DELETE')
-                         <button type="submit" class="btn btn-warning"
-                            onclick="return confirm('ต้องการลบใช่หรือไม่ ?')">ลบ</button>
+        @if (Auth::user())
+        @if (Auth::user()->name === $comment->user->name )
+        <form action="{{ route('comment.destroy', $comment->id) }}" method="post">
+                <div class="col-md pull-light">
+                    <div class="form-group">
+                    @csrf
+                    @method('DELETE')
+                     <button type="submit" class="btn btn-sm btn-outline-danger py-0"
+                        onclick="return confirm('ต้องการลบใช่หรือไม่ ?')">ลบ</button>
                     </div>
-                </form> 
-                @endif
-                @endif
+                </div>
+            </form> 
+            @endif
+            @endif
+
                 <br>
 
             @include('post.partials.replys', ['comments' => $comment->replies])

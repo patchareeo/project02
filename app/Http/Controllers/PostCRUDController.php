@@ -17,13 +17,13 @@ class PostCRUDController extends Controller
     public function index()
     {
         //dd($posts);
-        $data['posts'] = Post::orderBy('id','desc')->paginate(5);
-        $Alerts = Alert::orderBy('id', 'DESC')->get();
-        $id = Auth::user()->id;
-        $countAlert = Alert::where('orders_id',$id)->count();
+        // $data['posts'] = Post::orderBy('id','desc')->paginate(5);
+        // $Alerts = Alert::orderBy('id', 'DESC')->get();
+        // $id = Auth::user()->id;
+        // $countAlert = Alert::where('orders_id',$id)->count();
         
     
-        return view('posts.index')->with('countAlert' ,$countAlert)->with(compact('Alerts') ,$data);
+        // return view('posts.index')->with('countAlert' ,$countAlert)->with(compact('Alerts') ,$data);
         // $posts=Post::orderBy('id', 'desc')->get();
         // $posts = Post::all();
         // echo $posts;
@@ -111,7 +111,7 @@ class PostCRUDController extends Controller
     public function show(Post $post)
     {
         // dd($post);
-        return view('page.showpost',compact('post'));
+        // return view('page.showpost',compact('post'));
     }
 
     /**

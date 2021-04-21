@@ -3,7 +3,19 @@
 @section('title', 'Cart |Heawnea')
 
 @section('content')
+<section id="slider">
+    <!--slider-->
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
 
+            </div>
+        </div>
+    </div>
+</section>
+<!--/slider-->
+
+<section>
 
 
     <body>
@@ -27,8 +39,8 @@
                         </thead>
                         <tbody>
                             @foreach ($cart as $order)
-
-                                <tr>
+ 
+                                <tr class="" style="background-color:#F9E0DA">
                                     <td class="cart_product">
                                         <img src="{{ Storage::url($order->product_image) }}" alt="" width="180"
                                             height="150" />
@@ -62,9 +74,14 @@
                                     {{-- <td class="cart_total">
 								<p class="cart_total_price">150</p>
 							</td> --}}
-                                    {{-- <td class="cart_delete">
-								<a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
-							</td> --}}
+                            <form action="{{ route('order.destroy',$order->id) }}" method="POST">
+                                    <td class="cart_delete">
+                                        @csrf
+                                        @method('DELETE')
+                                        {{-- <a type="submit" class="fa fa-times" onclick="return confirm('ต้องการยกเลิกการสั่งสินค้าใช่หรือไม่ ?')"> ยกเลิก</a> --}}
+                                        <button class="fa fa-times" onclick="return confirm('ต้องการยกเลิกการสั่งสินค้าใช่หรือไม่ ?')" style="background-color:#fe980f"></button>
+								
+                            </form>
                                 </tr>
                             @endforeach
 

@@ -67,14 +67,16 @@ Route::get('/article/{post:slug}', [PostController::class, 'show'])->name('post.
 
 
 
-Route::post('/comment/store', [CommentController::class, 'store'])->name('comment.add');
-Route::post('/reply/store', [CommentController::class, 'replyStore'])->name('reply.add');
-Route::delete('/comment/{id}', [CommentController::class, 'destroy'])->name('comment.destroy');
+// Route::post('/comment/store', [CommentController::class, 'store'])->name('comment.add');
+// Route::post('/reply/store', [CommentController::class, 'replyStore'])->name('reply.add');
+// Route::delete('/comment/{id}', [CommentController::class, 'destroy'])->name('comment.destroy');
 
 // For User or Customer
 Route::middleware(['auth:sanctum', 'verified'])->group(function(){
     Route::get('/user/dashboard', UserDashboardComponent::class)->name('user.dashboard');
- 
+    Route::post('/comment/store', [CommentController::class, 'store'])->name('comment.add');
+    Route::post('/reply/store', [CommentController::class, 'replyStore'])->name('reply.add');
+    Route::delete('/comment/{id}', [CommentController::class, 'destroy'])->name('comment.destroy');
 });
  
 // For Admin

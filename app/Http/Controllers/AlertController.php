@@ -84,7 +84,7 @@ class AlertController extends Controller
         // $updatestatus->status = $request->submit;
 
         return redirect()->route('page.alert',['id' => $orders])     //->compact('orders',$orders)
-        ->with('success','Data Saved');
+        ->with('success');
            
     }
 

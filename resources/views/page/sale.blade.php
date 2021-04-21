@@ -59,5 +59,8 @@
 	
 </body>
 </html>
+<ul class="pagination">
+	<li class="active">{!! $Sale->links() !!}</li>
+</ul>
 
 @endsection

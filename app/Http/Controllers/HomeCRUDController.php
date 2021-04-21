@@ -25,24 +25,22 @@ class HomeCRUDController extends Controller
         if (Auth::user()) {
             $id = Auth::user()->id;
             // $id = Auth::all('name','id');
-            $posts = Post::where('date','>=',Carbon::now()->format('Y-m-d'))->orderBy('id', 'DESC')->get();
+            $posts = Post::where('date','>=',Carbon::now()->format('Y-m-d'))->orderBy('id', 'DESC')->paginate(12);
             $Alerts = Alert::orderBy('id', 'DESC')->get();
             $countAlert = Alert::where('orders_id',$id)->count();
             // $countAlert = Alert::all()->count();
             return view('page.home')->with(compact('posts'))->with('countAlert' ,$countAlert)->with(compact('Alerts'));
         } else {
-            $posts = Post::where('date','>=',Carbon::now()->format('Y-m-d'))->orderBy('id', 'DESC')->get();
+            $posts = Post::where('date','>=',Carbon::now()->format('Y-m-d'))->orderBy('id', 'DESC')->paginate(12);
             return view('page.home')->with(compact('posts'));
             
         }
-       
-
     }
 
     public function searchProduct(Request $request) {
 
-        // $products = Post::where('date','>=',Carbon::now()->format('Y-m-d'))->get();
         $name = "%" . $request->search . "%" ;
+        // $products = Post::where('name','LIKE', $name ('date','>=',Carbon::now()->format('Y-m-d')))->first();
         $products = Post::where('name','LIKE', $name,)->get();
         $id = Auth::user()->id;
         $countAlert = Alert::where('orders_id',$id)->count();
@@ -55,13 +53,13 @@ class HomeCRUDController extends Controller
     {
         // $posts = Post::orderBy('id', 'DESC')->get();
         // $Sale = Post::orderBy('id', 'DESC')->get();
-        $Alerts = Alert::orderBy('id', 'DESC')->get();
+        // $Alerts = Alert::orderBy('id', 'DESC')->get();
         $id = Auth::user()->id;
-        $Sale = Post::where('user_id',$id)->get();
+        $Sale = Post::where('user_id',$id)->paginate(12);
         // $countAlert = Alert::all()->count();
         $countAlert = Alert::where('orders_id',$id)->count();
        
-        return view('page.sale')->with(compact('Sale'))->with('countAlert' ,$countAlert)->with(compact('Alerts'));
+        return view('page.sale')->with(compact('Sale'))->with('countAlert' ,$countAlert);
 
     }
 
@@ -293,7 +291,7 @@ class HomeCRUDController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request, $id)
+    public function destroy($id)
     {
         $Alerts = Alert::where('id',$id);
         $Alerts ->delete();
