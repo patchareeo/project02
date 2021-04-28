@@ -23,10 +23,10 @@
             <form action="{{ route('page.profile', $profile->id) }}" method="GET">
                 <div class="panel panel-default" style="color:rgba(110, 96, 81, 0.849);">
                     
-                    <div class="panel-body" style="background-color:#F9E0DA">
+                    <div class="panel-body" style="background-color:#fcecdd">
                         <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
                             @if ($profile->image === null)
-                                <img alt="User Pic" src="{{asset('images/home/user2.png')}}"
+                                <img alt="User Pic" src="{{asset('images/home/user.jpg')}}"
                                     id="profile-image1" class="img-circle img-responsive" height="350" width="350" >
                             @else
                                 <img src="{{ Storage::url($profile->image) }}" height="350" width="350" alt="" />

@@ -20,7 +20,7 @@
     <div class="container">
         <div class="row">
             <div class="panel panel-default" style="color:rgba(110, 96, 81, 0.849);" >
-                <div class="panel-body" style="background-color:#F9E0DA" >
+                <div class="panel-body" style="background-color:#fcecdd" >
                     <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
                         @if ($contact->image === null)
                             <img alt="User Pic" src="{{asset('images/home/user.jpg')}}"

@@ -40,7 +40,7 @@
                         <tbody>
                             @foreach ($cart as $order)
  
-                                <tr class="" style="background-color:#F9E0DA">
+                                <tr class="" style="background-color:#fcecdd">
                                     <td class="cart_product">
                                         <img src="{{ Storage::url($order->product_image) }}" alt="" width="180"
                                             height="150" />

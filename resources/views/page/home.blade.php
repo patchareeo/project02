@@ -15,10 +15,10 @@
     </section>
     <!--/slider-->
 
-    <section>
+    <section style=>
         <div class="container">
             <div class="row">
-                <div class="col-sm-12 padding-right" style="background-color:#ffffff">
+                <div class="col-sm-12 padding-right">
                     <div class="features_items"  >
                         <h2 class="title text-center">รายการสินค้าทั้งหมด</h2>
                         @foreach ($posts as $post)

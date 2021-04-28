@@ -38,32 +38,32 @@ class HomeCRUDController extends Controller
     }
 
     public function searchProduct(Request $request) {
-
-        $name = "%" . $request->search . "%" ;
-        // $products = Post::where('name','LIKE', $name ('date','>=',Carbon::now()->format('Y-m-d')))->first();
-        $products = Post::where('name','LIKE', $name,)->get();
-        $id = Auth::user()->id;
-        $countAlert = Alert::where('orders_id',$id)->count();
-        // dd($products);
-        
-        return view("page.search")->with('products',$products)->with('countAlert' ,$countAlert);
+        if (Auth::user()) {
+            $name = "%" . $request->search . "%" ;
+            $products = Post::where([['name','LIKE', $name], ['date','>=',Carbon::now()->format('Y-m-d')]])->get();
+            // $products = Post::where('name','LIKE', $name,)->get();
+            $id = Auth::user()->id;
+            $countAlert = Alert::where('orders_id',$id)->count();
+            // dd($products); 
+            
+            return view("page.search")->with('products',$products)->with('countAlert' ,$countAlert ,$id);
+        } else {
+            $name = "%" . $request->search . "%" ;
+            $products = Post::where([['name','LIKE', $name], ['date','>=',Carbon::now()->format('Y-m-d')]])->get();
+            return view("page.search")->with('products',$products);
+        }
+    
     }
 
     public function sale()
     {
-        // $posts = Post::orderBy('id', 'DESC')->get();
-        // $Sale = Post::orderBy('id', 'DESC')->get();
-        // $Alerts = Alert::orderBy('id', 'DESC')->get();
         $id = Auth::user()->id;
-        $Sale = Post::where('user_id',$id)->paginate(12);
-        // $countAlert = Alert::all()->count();
+        $Sale = Post::where('user_id',$id)->orderBy('id', 'DESC')->paginate(12);
         $countAlert = Alert::where('orders_id',$id)->count();
-       
         return view('page.sale')->with(compact('Sale'))->with('countAlert' ,$countAlert);
-
     }
 
-    public function profile(Request $request)
+    public function profile()
     {
         $profile = new User;
         
@@ -126,15 +126,7 @@ class HomeCRUDController extends Controller
 
     public function contact($user_id)
     {
-        // dd($user_id);
         $contact = User::find($user_id);
-        // dd($contact);
-        // dd($contact); 
-        // $contact = new User;
-        // dd($user_id);
-        // $contact->contact_name = Auth::user()->name;
-        // $contact->contact_email= Auth::user()->email;
-        // $contact->contact_phone = Auth::user()->phone;
         $id = Auth::user()->id;
         $countAlert = Alert::where('orders_id',$id)->count();
 
@@ -229,12 +221,9 @@ class HomeCRUDController extends Controller
 
     public function cart()
     {
-
-        // $buy = orders::orderBy('id', 'DESC')->get();
         $id = Auth::user()->id;
         $cart = orders::where('user_id',$id)->orderBy('id', 'DESC')->get();
         $countAlert = Alert::where('orders_id',$id)->count();
-
         return view('page.cart')->with(compact('cart'))->with('countAlert' ,$countAlert);
     }
 
@@ -248,23 +237,22 @@ class HomeCRUDController extends Controller
      */
     public function show($id)
     {   
-        $details = Post::findOrFail($id);
-        // $orders = orders::all();
-        $orders = orders::where('post_id',$id)->get();
-        // $id = Auth::user()->id;
-        $countAlert = Alert::where('orders_id',$id)->count();
-        return view('page.showpost')->with(compact('details'))->with(compact('orders'))->with('countAlert' ,$countAlert);
+        if(Auth::user()) {
+            $details = Post::findOrFail($id);
+            // $orders = orders::all();
+            $orders = orders::where('post_id',$id)->get();
+            $id = Auth::user()->id;
+            $countAlert = Alert::where('orders_id',$id)->count();
+            return view('page.showpost')->with(compact('details'))->with(compact('orders'))->with('countAlert' ,$countAlert);
+        }else{
+            $details = Post::findOrFail($id);
+            // $orders = orders::all();
+            $orders = orders::where('post_id',$id)->get();
+            // $id = Auth::user()->id;
+            // $countAlert = Alert::where('orders_id',$id)->count();
+            return view('page.showpost')->with(compact('details'))->with(compact('orders'));
+        }
         
-        // dd($ordersUser); 
-        // $post = Post::find($id);
-        // $dateNow = (int)date("Y-m-d h:i");
-        // $datePost = (int)($post->date . ' ' . $post->time);
-        // dd($dateNow, $datePost);
-        // dd(date("Y-m-d h:i"), $post->date , $post->time);
-        // dd($details);      
-        // dd(date("Y-m-d h:i"), $post->date . ' ' . $post->time);
-        
-
         
     }
 
@@ -297,16 +285,10 @@ class HomeCRUDController extends Controller
         $Alerts ->delete();
         $order = orders::findOrFail($id);
         $order->delete();
-        
-          
-        // $user = User::findOrFail($id);
-        // $user->delete();
-
-        // $post = Post::find($id);
-        // dd(date("Y-m-d h:i"), $post->date . ' ' . $post->time);
-        // dd($order);
+     
         return redirect()->back();
     }
+
     public function deleteuser($id){
       
         DB::table('posts')->where('user_id', $id)->delete();  

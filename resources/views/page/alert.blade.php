@@ -33,8 +33,8 @@
 
 
                     <div class="col-md-4">
-                        <div class="product-image-wrapper">
-                            <div class="alert alert-danger">
+                        <div class="product-image-wrapper" style="width: 35rem; height=35rem;">
+                            <div class="alert alert-danger" style="background-color:#fcecdd;">
                                 <div class=" text-center">
                                     <p>ผู้สั่งสินค้า : {{ $alert->user_name }}</p>
                                     <p>สินค้า : {{ $alert->product_name }} จำนวน : {{ $alert->amount }}</p>

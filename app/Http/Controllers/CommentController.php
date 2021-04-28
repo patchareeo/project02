@@ -48,14 +48,10 @@ class CommentController extends Controller
 
     }
 
-    public function destroy(Request $request, $id)
+    public function destroy($id)
     {
-        // dd($id);
         $Comments = Comment::where('id',$id);
         $Comments ->delete();
-        // $order = orders::findOrFail($id);
-        // $order->delete();
- 
         return redirect()->back();
     }
 

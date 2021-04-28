@@ -24,11 +24,41 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
+	{{-- <style>
+        .carded {
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+          max-width: 1000px;
+          margin: auto;
+          text-align: center;
+          font-family: arial;
+        }
+        
+        .priceed {
+          color: grey;
+          font-size: 22px;
+        }
+        
+        .carded button {
+          border: none;
+          outline: 0;
+          padding: 12px;
+          color: white;
+          background-color: #000;
+          text-align: center;
+          cursor: pointer;
+          width: 100%;
+          font-size: 18px;
+        }
+        
+        .carded button:hover {
+          opacity: 0.7;
+        }
+        </style> --}}
 </head><!--/head-->
 
-<body>
+<body  style="background-color:#ffffff">
 	<header id="header"><!--header-->		
-		<div class="header-middle" style="background-color:#FCCFC5"><!--header-middle-->
+		<div class="header-middle" style="background-color:#ffda99"><!--header-middle FCCFC5-->
 			<div class="container">
 				<div class="row">
 					<div class="col-md-4 clearfix">
@@ -69,14 +99,14 @@
 														<li>
 															<li class="menu-item menu-item-has-children parent">
 															@if (Auth::user()->image === null)
-																<img alt="" src="{{asset('images/home/user2.png')}}" height="30" width="30">
+																<img class="img-circle" src="{{asset('images/home/user.jpg')}}" height="30" width="30">
 															@else
-																<img src="{{ Storage::url(Auth::user()->image) }}" height="23" width="23" alt="" />
+																<img class="img-circle" src="{{ Storage::url(Auth::user()->image) }}" height="30" width="30" />  
 															@endif
-																<a title="My Account" href="{{route('page.profile')}}" style="background-color:#FCCFC5">My Account: {{Auth::user()->name}}<i class="" aria-hidden="true"></i></a>
+																<a title="My Account" href="{{route('page.profile')}}" style="background-color:#ffda99">My Account: {{Auth::user()->name}}<i class="" aria-hidden="true"></i></a>
 																{{-- {{-- <ul class="submenu curency"> --}}
 																	<li class="menu-item"> 
-																	<a href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" style="background-color:#FCCFC5">Logout</a>
+																	<a href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" style="background-color:#ffda99">Logout</a>
 																	</li>
 																	<form id="logout-form" method="POST" action="{{route('logout')}}">
 																		@csrf
@@ -88,14 +118,14 @@
 														<li>
 															<li class="menu-item menu-item-has-children parent" >
 															@if (Auth::user()->image === null)
-																<img alt="" src="{{asset('images/home/user2.png')}}" style="background-color:#FCCFC5" height="30" width="30" >
+																<img class="img-circle" src="{{asset('images/home/user.jpg')}}" style="background-color:#ffda99" height="30" width="30" >
 															@else
-																<img src="{{ Storage::url(Auth::user()->image) }}" height="23" width="23" alt="" />
+																<img class="img-circle" src="{{ Storage::url(Auth::user()->image) }}" height="30" width="30" />
 															@endif
-																<a title="My Account" href="{{route('page.profile')}}" style="background-color:#FCCFC5"> {{Auth::user()->name}}<i class="" aria-hidden="true"></i></a>
+																<a title="My Account" href="{{route('page.profile')}}" style="background-color:#ffda99"> {{Auth::user()->name}}<i class="" aria-hidden="true"></i></a>
 																{{-- <ul class="submenu curency"> --}}
 																	<li class="menu-item">
-																	<a href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" style="background-color:#FCCFC5">Logout</a>
+																	<a href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" style="background-color:#ffda99">Logout</a>
 																	</li>
 																	<form id="logout-form" method="POST" action="{{route('logout')}}">
 																		@csrf
@@ -106,8 +136,8 @@
 														@endif  
 
 													@else
-													<li class="fa fa-lock"><a title="Register or Login" href="{{route('login')}}" style="background-color:#FCCFC5"> Login</a></li>
-													<li class="fa fa-user"><a title="Register or Login" href="{{route('register')}}" style="background-color:#FCCFC5"> Register</a></li>
+													<li class="fa fa-lock"><a title="Register or Login" href="{{route('login')}}" style="background-color:#ffda99"> Login</a></li>
+													<li class="fa fa-user"><a title="Register or Login" href="{{route('register')}}" style="background-color:#ffda99"> Register</a></li>
 													@endif
 											@endif 
 
@@ -132,7 +162,7 @@
 			</div>
 		</div><!--/header-middle-->
 	
-		<div class="header-bottom" style="background-color:#FCCFC5"><!--header-bottom-->
+		<div class="header-bottom" style="background-color:#ffda99"><!--header-bottom-->
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-9">

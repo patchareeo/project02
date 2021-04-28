@@ -31,7 +31,7 @@
                                 <div class="form-group">
                                     {{-- {{ $details->user_id }} --}}
                                     <div>ชื่อผู้โพสต์ : <a
-                                            href="{{ route('page.contact', $details->user_id) }}">{{ $details->user_name }}
+                                            href="{{ route('page.contact', $details->user_id) }}">{{ $details->user->name }}
                                         </a></div>
                                 </div>
                                 <div class="form-group">
@@ -177,7 +177,7 @@
                                         <form action="{{ route('order.destroy', $order->id) }}" method="POST">
                                             <div class="col-md-4">
                                                 <br>
-                                                <div class="product-image-wrapper">
+                                                <div class="product-image-wrapper" style="background-color:#ffda99">
                                                     <div class="single-products">
                                                         <div class="productinfo text-center">
                                                             <p>ผู้สั่งสินค้า : {{ $order->user_name }}</p>

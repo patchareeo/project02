@@ -17,9 +17,9 @@ class AlertController extends Controller
      */
     public function index()
     {
-        $Alerts = Alert::orderBy('id', 'DESC')->get();
+        // $Alerts = Alert::orderBy('id', 'DESC')->get();
         $id = Auth::user()->id;
-        $Alerts = Alert::where('orders_id',$id)->get();
+        $Alerts = Alert::where('orders_id',$id)->orderBy('id', 'DESC')->get();
         $countAlert = Alert::where('orders_id',$id)->count();
         // $order = orders::where('orders_id',$id)->get();
         // dd($countAlert);
@@ -57,19 +57,19 @@ class AlertController extends Controller
             // dd($updatestatus);
             $updatestatus->save();
 
-            $updatestatus = orders::find($id);
-            $updatestatus->id = $id;
-            $updatestatus->post_id = $order->post_id;
-            // $updatestatus->orders_id = $order->orders_id;
-            $updatestatus->user_id = $order->user_id;
-            $updatestatus->user_name = $order->user_name;
-            $updatestatus->amount = $order->amount;
-            $updatestatus->detail = $order->detail;
-            $updatestatus->product_name = $order->product_name;
-            $updatestatus->product_price = $order->product_price;
-            $updatestatus->status = $request->submit;
-            // dd($updatestatus);
-            $updatestatus->save();
+            $orderstatus = orders::find($id);
+            $orderstatus->id = $id;
+            $orderstatus->post_id = $order->post_id;
+            // $orderstatus->orders_id = $order->orders_id;
+            $orderstatus->user_id = $order->user_id;
+            $orderstatus->user_name = $order->user_name;
+            $orderstatus->amount = $order->amount;
+            $orderstatus->detail = $order->detail;
+            $orderstatus->product_name = $order->product_name;
+            $orderstatus->product_price = $order->product_price;
+            $orderstatus->status = $request->submit;
+            // dd($orderstatus);
+            $orderstatus->save();
         }
 
         // $updatestatus->id = $id;
