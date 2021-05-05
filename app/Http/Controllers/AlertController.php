@@ -17,32 +17,17 @@ class AlertController extends Controller
      */
     public function index()
     {
-        // $Alerts = Alert::orderBy('id', 'DESC')->get();
         $id = Auth::user()->id;
         $Alerts = Alert::where('orders_id',$id)->orderBy('id', 'DESC')->get();
         $countAlert = Alert::where('orders_id',$id)->count();
-        // $order = orders::where('orders_id',$id)->get();
-        // dd($countAlert);
-        
-
-        // return view('page.alert', ['countAlert' => $countAlert])->with(compact('Alerts'));
         return view('page.alert')->with('countAlert' ,$countAlert)->with(compact('Alerts'));
         
     }
 
     public function status(Request $request,$id){
-   
-        // $updatestatus->status = $request->submit;
-        // $updatestatus->post_id = $request->post_id;
-        //  dd($request->submit);
-        // $order = orders::findOr(); 
-        // $orders = Alert::where('id',$id)->get();
-        // $orders->post_id = $orders->post_id;
-        
         
         $orders = DB::table('alerts','orders')->where('id', $id)->get();
         foreach ($orders as $order) {
-            // $updatestatus = new Alert;
             $updatestatus = Alert::find($id);
             $updatestatus->id = $id;
             $updatestatus->post_id = $order->post_id;
@@ -54,13 +39,11 @@ class AlertController extends Controller
             $updatestatus->product_name = $order->product_name;
             $updatestatus->product_price = $order->product_price;
             $updatestatus->status = $request->submit;
-            // dd($updatestatus);
             $updatestatus->save();
 
             $orderstatus = orders::find($id);
             $orderstatus->id = $id;
             $orderstatus->post_id = $order->post_id;
-            // $orderstatus->orders_id = $order->orders_id;
             $orderstatus->user_id = $order->user_id;
             $orderstatus->user_name = $order->user_name;
             $orderstatus->amount = $order->amount;
@@ -68,22 +51,9 @@ class AlertController extends Controller
             $orderstatus->product_name = $order->product_name;
             $orderstatus->product_price = $order->product_price;
             $orderstatus->status = $request->submit;
-            // dd($orderstatus);
             $orderstatus->save();
         }
-
-        // $updatestatus->id = $id;
-        // $updatestatus->post_id = $orders->post_id;
-        // $updatestatus->orders_id = $orders->orders_id;
-        // $updatestatus->user_id = $orders->user_id;
-        // $updatestatus->user_name = $orders->user_name;
-        // $updatestatus->amount = $orders->amount;
-        // $updatestatus->detail = $orders->detail;
-        // $updatestatus->product_name = $orders->product_name;
-        // $updatestatus->product_price = $orders->product_price;
-        // $updatestatus->status = $request->submit;
-
-        return redirect()->route('page.alert',['id' => $orders])     //->compact('orders',$orders)
+        return redirect()->route('page.alert',['id' => $orders])    
         ->with('success');
            
     }
@@ -106,24 +76,7 @@ class AlertController extends Controller
      */
     public function store(Request $request)
     {
-    //     $validator = Validator::make($request->all(), [
-    //         'amount' => 'required',
-    //         'detail' => 'required',
-    //     ]);
 
-    //     $productId = $request->id;
-    //     $post = new Alert;
-    //     $post->amount = $request->input('amount');
-    //     $post->detail = $request->input('detail');
-    //     $post->user_id = 1;
-    //     $post->post_id = $productId;
-    //     $post->orders_id = $productId;
-
-    //     $post->save();
-      
-    //     return retdirect()->back();
-        // return redirect()->route('page.alert')
-        //                 ->with('success','Data Saved');
     }
 
     /**
@@ -135,10 +88,6 @@ class AlertController extends Controller
     public function show($id)
     {
         $Alerts = Alert::all();
-        
-        // $Alerts = Alert::findOrFail($id);
-        // return view('page.alert',compact('alert'));
-        // dd($Alerts);
         return view('page.alert')-> with(compact('Alerts'));
         
         

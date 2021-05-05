@@ -18,12 +18,10 @@ class CreatePostsTable extends Migration
             $table->integer('user_id');
             $table->string('user_name');
             $table->string('name');
-            $table->string('slug');  // add slug 
-            $table->integer('price');
+            $table->integer('price');  
             $table->string('image');
             $table->integer('amount');
             $table->string('date');
-            // $table->text('time');
             $table->text('detail');
             $table->timestamps();
         });

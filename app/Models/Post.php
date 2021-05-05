@@ -10,7 +10,7 @@ class Post extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name', 'price', 'amount' , 'detail' ,'slug','date','time'
+        'name', 'price', 'amount' , 'detail' ,'date','time'
     ];
     // add join
     public function user()

@@ -63,7 +63,7 @@ Route::get('/profile/{id}', [HomeCRUDController::class, 'editprofile'])->name('p
 Route::put('/updateprofile/{id}', [HomeCRUDController::class, 'updateprofile'])->name('page.updateprofile');
 Route::get('/contact/{user_id}', [HomeCRUDController::class, 'contact'])->name('page.contact');
 
-Route::get('/article/{post:slug}', [PostController::class, 'show'])->name('post.show');
+Route::get('/article/{post:name}', [PostController::class, 'show'])->name('post.show');
 
 
 

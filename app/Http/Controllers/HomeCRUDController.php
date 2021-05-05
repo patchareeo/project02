@@ -24,11 +24,9 @@ class HomeCRUDController extends Controller
     {   
         if (Auth::user()) {
             $id = Auth::user()->id;
-            // $id = Auth::all('name','id');
             $posts = Post::where('date','>=',Carbon::now()->format('Y-m-d'))->orderBy('id', 'DESC')->paginate(12);
             $Alerts = Alert::orderBy('id', 'DESC')->get();
             $countAlert = Alert::where('orders_id',$id)->count();
-            // $countAlert = Alert::all()->count();
             return view('page.home')->with(compact('posts'))->with('countAlert' ,$countAlert)->with(compact('Alerts'));
         } else {
             $posts = Post::where('date','>=',Carbon::now()->format('Y-m-d'))->orderBy('id', 'DESC')->paginate(12);
@@ -41,11 +39,8 @@ class HomeCRUDController extends Controller
         if (Auth::user()) {
             $name = "%" . $request->search . "%" ;
             $products = Post::where([['name','LIKE', $name], ['date','>=',Carbon::now()->format('Y-m-d')]])->get();
-            // $products = Post::where('name','LIKE', $name,)->get();
             $id = Auth::user()->id;
             $countAlert = Alert::where('orders_id',$id)->count();
-            // dd($products); 
-            
             return view("page.search")->with('products',$products)->with('countAlert' ,$countAlert ,$id);
         } else {
             $name = "%" . $request->search . "%" ;
@@ -66,7 +61,6 @@ class HomeCRUDController extends Controller
     public function profile()
     {
         $profile = new User;
-        
         $profile->profile_name =Auth::user()->name;
         $profile->profile_email=Auth::user()->email;
         $profile->profile_phone =Auth::user()->phone;
@@ -78,23 +72,13 @@ class HomeCRUDController extends Controller
     }
     public function editprofile($id)
     {
-        // $id = Auth::user()->id;
         $countAlert = Alert::where('orders_id',$id)->count();
         $profile = User::find($id);
-        // dd($profile);
-
         return view('page.edit-profile')->with('countAlert' ,$countAlert)->with(compact('profile'));
     }
 
     public function updateprofile(Request $request, $id)
-    {
-        // $request->validate([
-            //     'name' => 'required',
-            //     'email' => 'required',
-            //     'phone' => 'required',
-            //     ]);
-            
-            
+    {  
             $profile = User::find($id);
             if($request->hasFile('image')){
                 $request->validate([
@@ -106,20 +90,8 @@ class HomeCRUDController extends Controller
                 $profile->name = $request->name;
                 $profile->email = $request->email;
                 $profile->phone = $request->phone;
-                // $profile->email_verified_at = $request->email_verified_at ;
-                // $profile->password = $request->password;
-                // $profile->two_factor_secret = $request->two_factor_secret;
-                // $profile->two_factor_recovery_codes = $request->two_factor_recovery_codes;
-                // $profile->remember_token = $request->remember_token;
-                // $profile->current_team_id = $request->current_team_id;
-                // $profile->profile_photo_path = $request->profile_photo_path;
-                // $profile->created_at = $request->created_at;
-                // $profile->updated_at = $request->updated_at;
-                // dd($profile);
                 $profile->save();
-
-        
-    
+   
         return redirect()->route('page.profile', ['id' => $profile])
                         ->with('success','Post updated successfully');
     }
@@ -168,8 +140,6 @@ class HomeCRUDController extends Controller
             $time = $order->time;
             $status = $order->status;
         }
-        // dd($id, $user_name, $name);
-        
 
         $validator = Validator::make($request->all(), [
             'amount' => 'required',
@@ -188,10 +158,6 @@ class HomeCRUDController extends Controller
         $post->product_price = $price;
         $post->product_image = $image;
         $post->status = 'รอการยืนยัน';
-        
-        // $post->product_slug = $slug;
-        // $post->product_date = $date;
-        // $post->time = $time;
         $post->save();
 
             // Alert 
@@ -206,15 +172,8 @@ class HomeCRUDController extends Controller
         $alert->product_name = $name;
         $alert->product_price = $price;
         $alert->status = 'รอการยืนยัน';
-        // $alert->product_slug = $slug;
-        // $alert->product_image = $image;
-        // $alert->product_date = $date;
-        // $alert->time = $time;
         $alert->save();
 
-        // dd($alert);
-      
-        // return retdirect()->back();
         return redirect()->route('page.showpost', $productId)
                         ->with('success','Data Saved');
     }
@@ -239,17 +198,13 @@ class HomeCRUDController extends Controller
     {   
         if(Auth::user()) {
             $details = Post::findOrFail($id);
-            // $orders = orders::all();
             $orders = orders::where('post_id',$id)->get();
             $id = Auth::user()->id;
             $countAlert = Alert::where('orders_id',$id)->count();
             return view('page.showpost')->with(compact('details'))->with(compact('orders'))->with('countAlert' ,$countAlert);
         }else{
             $details = Post::findOrFail($id);
-            // $orders = orders::all();
             $orders = orders::where('post_id',$id)->get();
-            // $id = Auth::user()->id;
-            // $countAlert = Alert::where('orders_id',$id)->count();
             return view('page.showpost')->with(compact('details'))->with(compact('orders'));
         }
         
