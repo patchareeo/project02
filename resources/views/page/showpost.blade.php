@@ -29,10 +29,11 @@
                         <div class="features_items">
                             <div class="col-xs-12 col-sm-12 col-md-8">
                                 <div class="form-group">
-                                    {{-- {{ $details->user_id }} --}}
+                                    @if (Auth::user())
                                     <div>ชื่อผู้โพสต์ : <a
                                             href="{{ route('page.contact', $details->user_id) }}">{{ $details->user->name }}
-                                        </a></div>
+                                    </a></div>
+                                    @endif
                                 </div>
                                 <div class="form-group">
                                     <img src="{{ Storage::url($details->image) }}" alt="Girl in a jacket" width="400"

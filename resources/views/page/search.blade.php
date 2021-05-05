@@ -32,25 +32,34 @@
                 <div class="col-sm-12 padding-right">
                     <div class="features_items">
                         <h2 class="title text-center">รายการค้นหา</h2>
-
+                        
+                        @if($products->isNotEmpty())
                         @foreach ($products as $product)
-                    
-                            <div class="col-sm-3">
-                                <div class="product-image-wrapper">
-                                    <div class="single-products">
-                                        <div class="productinfo text-center">
-                                            <img src="{{ Storage::url($product->image) }}" alt="Girl in a jacket"
-                                                width="150" height="250" />
-                                            <h2>{{ $product->price }}</h2>
-                                            <p>{{ $product->name }}</p>
-                                            <a href="{{ route('show', $product->id) }}"
-                                                class="btn btn-default add-to-cart"></i>ดูรายละเอียดสินค้า</a>
+                        <div class="col-sm-3">
+                            <div class="product-image-wrapper">
+                                <div class="single-products">
+                                    <div class="productinfo text-center">
+                                        <img src="{{ Storage::url($product->image) }}" alt="Girl in a jacket"
+                                            width="150" height="250" />
+                                        <h2>{{ $product->price }}</h2>
+                                        <p>{{ $product->name }}</p>
+                                        <a href="{{ route('show', $product->id) }}"
+                                            class="btn btn-default add-to-cart"></i>ดูรายละเอียดสินค้า</a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                            
                         @endforeach
+                        @else 
+                        <div class="title text-center">
+                            <img src="{{ asset('images/home/11.png') }}" width="250"
+                            height="250" />
+                            <h1 style="color:rgba(110, 96, 81, 0.849);">ไม่พบรายการสินค้า</h1>
+                        </div> 
+                        
+
+                        @endif
 
                     </div>
                 </div>

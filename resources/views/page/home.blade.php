@@ -41,21 +41,11 @@
 
 
                     </div>
-                    {{-- <a class="left recommended-item-control" href="#recommended-item-carousel" data-slide="prev">
-                        <i class="fa fa-angle-left"></i>
-                    </a>
-                    <a class="right recommended-item-control" href="#recommended-item-carousel" data-slide="next">
-                        <i class="fa fa-angle-right"></i>
-                    </a> --}}
                 </div>
             </div>
             <!--/recommended_items-->
             <ul class="pagination">
                 <li class="active">{!! $posts->links() !!}</li>
-                {{-- <li class="active"><a href="">2</a></li>
-                <li class="active"><a href="">3</a></li>
-                <li class="active"><a href="">&raquo;</a></li>
-                {!! $posts->links() !!} --}}
             </ul>
         </div>
         </div>

@@ -20,6 +20,7 @@
 				<div class="col-sm-12 padding-right">
 					<div class="features_items">
 						<h2 class="title text-center">สินค้าที่ลงขาย</h2>
+						@if($Sale ->isNotEmpty())
                         @foreach($Sale as $post)
                         <div class="col-sm-3">
 							<div class="product-image-wrapper">
@@ -34,23 +35,16 @@
 							</div>
 						</div> 
 						@endforeach
-						
-						
-							{{-- </div>
-							 <a class="left recommended-item-control" href="#recommended-item-carousel" data-slide="prev">
-								<i class="fa fa-angle-left"></i>
-							  </a>
-							  <a class="right recommended-item-control" href="#recommended-item-carousel" data-slide="next">
-								<i class="fa fa-angle-right"></i>
-							  </a>			
-							</div>
-					</div>
-					<ul class="pagination">
-					<li class="active"><a href="">1</a></li>
-					<li class="active"><a href="">2</a></li>
-					<li class="active"><a href="">3</a></li>
-					<li class="active"><a href="">&raquo;</a></li>
-					</ul> --}}
+						@else 
+                        <div class="title text-center">
+                            <img src="{{ asset('images/home/11.png') }}" width="250"
+                            height="250" />
+                            <h1 style="color:rgba(110, 96, 81, 0.849);">ไม่พบรายการสินค้า</h1>
+                        </div> 
+                        
+
+                        @endif
+					
 				</div>
 			</div>
 		</div>
