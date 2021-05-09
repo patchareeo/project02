@@ -20,11 +20,6 @@ class CommentController extends Controller
 
         $post = Post::find($request->post_id);
 
-        // dd($request->comment);
-        // dd($request->post_id);
-        // dd($post);
-
-
         $post->comments()->save($comment);   
 
         return back();

@@ -80,7 +80,7 @@
                     @endforeach
                     @else 
                     <div class="title text-center">
-                        <img src="{{ asset('images/home/11.png') }}" width="250"
+                        <img src="{{ asset('images/home/question3.png') }}" width="250"
                         height="250" />
                         <h1 style="color:rgba(110, 96, 81, 0.849);">ไม่พบรายการสินค้า</h1>
                     </div>   
