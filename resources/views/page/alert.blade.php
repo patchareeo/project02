@@ -34,7 +34,7 @@
                             <div class="product-image-wrapper" style="width: 35rem; height=35rem;">
                                 <div class="alert alert-danger" style="background-color:#fcecdd;">
                                     <div class=" text-center">
-                                                <p>ผู้สั่งสินค้า : {{ $alert->user_name }}</p>
+                                                <p>ผู้สั่งสินค้า : <a href="{{ route('page.contact', $alert->user_id) }}">{{ $alert->user->name }}</a></p>
                                                 <p>สินค้า : {{ $alert->product_name }} จำนวน : {{ $alert->amount }}</p>
                                                 <p>ราคา :{{ $alert->product_price * $alert->amount }}</p>
                                                 <p>รายละเอียด :{{ $alert->detail }}</p>
