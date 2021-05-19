@@ -200,7 +200,6 @@ class HomeCRUDController extends Controller
     public function deleteuser($id){
       
         DB::table('posts')->where('user_id', $id)->delete();  
-        
         $user = User::findOrFail($id);
         $user->delete();
         return redirect()->route('index')

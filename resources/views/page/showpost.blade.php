@@ -94,9 +94,9 @@
 
                                             @csrf
                                             @method('DELETE')
-                                            <a class="btn btn-danger" type="submit"
-                                                onclick="return confirm('ต้องการลบสินค้าใช่หรือไม่ ?')"><span
-                                                    class="fa fa-trash-o" aria-hidden="true"></span> ลบสินค้า</a>
+                                            <button type="submit" class="btn btn-danger" onclick="return confirm('ต้องการลบสินค้าใช่หรือไม่ ?')">ลบสินค้า</button>
+                                            {{-- <a class="btn btn-danger" type="submit"
+                                                onclick="return confirm('ต้องการลบสินค้าใช่หรือไม่ ?')"><span class="fa fa-trash-o" aria-hidden="true"></span> ลบสินค้า</a> --}}
                                             {{-- <td><a class="btn btn-sm btn-danger"  href="" ><span class="fa fa-trash" ></span> ยกเลิก</a></td> --}}
                                         </form>
                                     @endif
@@ -108,9 +108,8 @@
                                     <form action="{{ route('posts.destroy', $details->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
-                                        <a class="btn btn-danger" type="submit"
-                                            onclick="return confirm('ต้องการลบสินค้าใช่หรือไม่ ?')"><span
-                                                class="fa fa-trash-o" aria-hidden="true"></span> ลบสินค้า</a>
+                                        <button type="submit" class="btn btn-danger" onclick="return confirm('ต้องการลบสินค้าใช่หรือไม่ ?')">ลบสินค้า</button>
+
 
                                     </form>
                                 @endif

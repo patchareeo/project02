@@ -37,7 +37,8 @@
                             <form action="{{ route('user.destroy', $contact->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <a class="btn btn-sm btn-danger pull-right" type="submit" onclick="return confirm('ต้องการลบผู้ใช้งานใช่หรือไม่ ?')"><span class="fa fa-trash-o" aria-hidden="true"></span> ลบผู้ใช้งาน</a>
+                                <button class="btn btn-sm btn-danger pull-right" type="submit" class="btn btn-danger" onclick="return confirm('ต้องการลบสินค้าใช่หรือไม่ ?')">ลบผู้ใช้งาน</button>
+                                {{-- <a class="btn btn-sm btn-danger pull-right" type="submit" onclick="return confirm('ต้องการลบผู้ใช้งานใช่หรือไม่ ?')"><span class="fa fa-trash-o" aria-hidden="true"></span> ลบผู้ใช้งาน</a> --}}
                                 {{-- <button type="submit" class="pull-right"
                                     onclick="return confirm('ต้องการลบผู้ใช้งานใช่หรือไม่ ?')">ลบผู้ใช้งาน</button> --}}
 

@@ -10,7 +10,7 @@ class Alert extends Model
     use HasFactory;
 
     protected $fillable = [
-        'amount' , 'detail'
+        'amount' , 'detail', 'status'
     ];
 
     public function user()
